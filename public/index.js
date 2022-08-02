@@ -1,4 +1,4 @@
 import logo from "./logo.png";
-import background from "./background.jpeg";
+import wave1 from "./wave1.svg";
 
-export { logo };
+export { logo, wave1 };
