@@ -15,7 +15,7 @@ module.exports = {
         light: "#F2B80E",
       },
       backgroundImage: {
-        background: "../public/background.jpeg",
+        background: "url(../public/background.jpeg)",
       }
     },
     
