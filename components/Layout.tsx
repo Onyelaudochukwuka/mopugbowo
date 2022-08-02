@@ -3,7 +3,7 @@ import React, { Component, FC, PropsWithChildren } from 'react'
 
 const Layout = ({children}:PropsWithChildren<any>) => {
   return (
-      <div className="min-h-screen">
+      <div className="min-h-screen bg-dark">
       <Head>
           <meta name="author" content="Onyela Udochukwuka"/>
             <meta name="description" content="Ministry Of Perfection - Ugbowo; Stay up-to-date with Our programmes and Event"/>
