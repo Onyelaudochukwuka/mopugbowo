@@ -9,8 +9,10 @@ module.exports = {
       colors: {
         shadow: "#D9D9D9",
         primary: "#550984",
-        curves: "#B641FF"
-
+        curves: "#B641FF",
+        dark: "#4E0B77",
+        primaryLight: "#C363FF",
+        light: "#F2B80E",
       }
     },
     
