@@ -1,8 +1,11 @@
 import React, { FC } from 'react'
-
+import  Image  from 'next/image';
+import { wave1 } from "../public";
 const Sermons:FC = () => {
   return (
-    <div>Sermons</div>
+    <div>
+    <h1>Weekly Sermons</h1>
+    </div>
   )
 }
 
