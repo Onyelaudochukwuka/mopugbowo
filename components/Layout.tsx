@@ -1,5 +1,6 @@
+import { NextPage } from "next";
 import Head from "next/head";
-import React, { Component, FC, PropsWithChildren } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 
 const Layout = ({children}:PropsWithChildren<any>) => {
   return (
