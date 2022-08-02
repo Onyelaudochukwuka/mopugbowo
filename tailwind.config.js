@@ -16,6 +16,7 @@ module.exports = {
       },
       backgroundImage: {
         background: "url(../public/background.jpeg)",
+        waves: "url(../public/wave1.svg)",
       }
     },
     
