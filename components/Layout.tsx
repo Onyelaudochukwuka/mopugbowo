@@ -1,7 +1,7 @@
 import Head from "next/head";
-import React, { Component, PropsWithChildren } from 'react'
+import React, { Component, FC, PropsWithChildren } from 'react'
 
-const Layout = ({children}:PropsWithChildren<Component>) => {
+const Layout = ({children}:PropsWithChildren<any>) => {
   return (
       <div className="min-h-screen">
       <Head>
