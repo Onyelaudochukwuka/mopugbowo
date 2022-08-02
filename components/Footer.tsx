@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const Footer = (props:any) => {
+const Footer:FC = (props:any) => {
   return (
     <div>Footer</div>
   )
