@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const Navbar = (props:any) => {
+const Navbar:FC = (props:any) => {
   return (
-    <div>Navbar</div>
+    <nav >
+      
+    </nav>
   )
 }
 
