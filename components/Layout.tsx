@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import React, { FC, PropsWithChildren } from 'react'
+import Navbar from "./Navbar";
 
 const Layout = ({children}:PropsWithChildren<any>) => {
   return (
@@ -16,6 +17,7 @@ const Layout = ({children}:PropsWithChildren<any>) => {
                         <title>Ministry Of Perfection Church - Ugbowo</title>
                         <meta name='viewport' content='width=device-width, initial-scale=1'/>
       </Head>
+      <Navbar />
       {children}
     </div>
   )
