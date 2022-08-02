@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const Cta = () => {
+const Cta:FC = () => {
   return (
     <div>Cta</div>
   )
