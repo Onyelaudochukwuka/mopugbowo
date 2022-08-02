@@ -6,7 +6,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
+    },colors: {
         shadow: "#D9D9D9",
         primary: "#550984",
         curves: "#B641FF",
@@ -14,7 +14,6 @@ module.exports = {
         primaryLight: "#C363FF",
         light: "#F2B80E",
       }
-    },
     
   },
   plugins: [],
