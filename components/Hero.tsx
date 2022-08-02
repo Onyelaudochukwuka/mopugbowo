@@ -2,7 +2,9 @@ import React, { FC } from 'react'
 
 const Hero:FC = () => {
   return (
-    <div>Hero</div>
+    <div className="h-screen bg-background">
+
+    </div>
   )
 }
 
