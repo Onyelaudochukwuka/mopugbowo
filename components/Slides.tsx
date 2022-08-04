@@ -2,7 +2,9 @@ import React, { FC } from 'react'
 
 const Slides:FC = () => {
   return (
-    <div>Slides</div>
+      <div>
+          
+    </div>
   )
 }
 
