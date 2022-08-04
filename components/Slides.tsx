@@ -7,7 +7,7 @@ const Slides: FC = () => {
   const Id = useId();
 
   return (
-    <div className="flex w-full items-center justify-center mt-24">
+    <div className="flex w-full items-center justify-center mt-24 z-10">
       <span className="w-16 h-16 block translate-x-56 z-10 cursor-pointer"
         onClick={()=>{
           setImages((prev)=>{
