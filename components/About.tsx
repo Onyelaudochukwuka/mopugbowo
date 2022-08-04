@@ -1,16 +1,22 @@
 import Image from "next/image"
 import React, { FC } from 'react'
-import { pastor } from "../public"
+import { pastor, about1, about2, about3 } from "../public";
+const about = [about1, about2, about3];
 const About:FC = () => {
   return (
-    <section className="flex justify-around">
-      <span className="w-1/3 block basis-1/3"><Image src={pastor} layout={"responsive"} /></span> 
-      <div className="w-full basis-1/3 text-left text-white">
+    <section className="mt-24">
+    <div className="flex justify-around">
+      <span className="h-1/3 block basis-1/3"><Image src={pastor} layout={"responsive"} /></span> 
+      <div className="w-full basis-1/3 text-left text-white flex flex-col gap-3">
         <h1 className="text-white font-bold tracking-widest text-2xl before:content-[''] before:absolute before:w-24 before:h-1 before:rounded-full  before:bg-white  before:mt-8">About US</h1>
         <div>
           <h2 className="text-white font-semibold tracking-widest text-xl">Why We Exist</h2>
           <p>Our mission is to bring total salvation and transformation to all men by teaching and preaching the undiluted word of God across the world.</p>
         </div>
+      </div>
+      </div>
+      <div>
+        {about.map((img) => <span><Image src={img} layout={"responsive"} /></span>)}
       </div>
     </section>
   )
