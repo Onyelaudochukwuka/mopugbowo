@@ -1,8 +1,10 @@
-import React, { FC, JSXElementConstructor } from 'react'
+import React, { FC } from 'react'
 
 const About:FC = () => {
   return (
-    <div>About</div>
+    <section>
+      
+    </section>
   )
 }
 
