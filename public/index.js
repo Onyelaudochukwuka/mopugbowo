@@ -8,6 +8,7 @@ import rightArrow from './rightArrow.svg';
 import about1 from './about1.png';
 import about2 from './about2.png';
 import about3 from './about3.png';
+import pastor from './pastor.png';
 
 
-export { logo, wave1, slide1, slide2, slide3, rightArrow, leftArrow, about1, about2, about3 };
+export { logo, wave1, slide1, slide2, slide3, rightArrow, leftArrow, about1, about2, about3, pastor };
