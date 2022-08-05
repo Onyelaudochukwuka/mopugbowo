@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import { About, Contact, Hero, Sermons } from "../components"
+import { About, Contact, Cta, Hero, Sermons } from "../components"
 const Home: NextPage = () => {
   return (
     <div>
@@ -7,6 +7,7 @@ const Home: NextPage = () => {
       <Sermons />
       <About />
       <Contact />
+      <Cta/>
     </div>
     )
 }
