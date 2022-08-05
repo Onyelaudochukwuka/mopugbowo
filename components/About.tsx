@@ -1,8 +1,9 @@
 import Image from "next/image"
-import React, { FC } from 'react'
+import React, { FC, useId } from 'react'
 import { pastor, about1, about2, about3 } from "../public";
 const about = [about1, about2, about2];
-const About:FC = () => {
+const About: FC = () => {
+  const Id = useId()
   return (
     <section className="mt-24">
     <div className="flex justify-around items-center">
@@ -16,7 +17,7 @@ const About:FC = () => {
       </div>
       </div>
       <div className="flex justify-evenly w-3/4 ml-auto relative right-0 -translate-y-10">
-        {about.map((img) => <span className="w-48 h-48 block cursor-pointer"><Image src={img} layout={"responsive"} /></span>)}
+        {about.map((img,i) => <span key={Id + i} className="w-48 h-48 block cursor-pointer"><Image src={img} layout={"responsive"} /></span>)}
       </div>
     </section>
   )
