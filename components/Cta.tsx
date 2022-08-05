@@ -5,9 +5,9 @@ import Image from 'next/image'
 const Cta:FC = () => {
   const [email, setEmail] = useState<string>('')
   return (
-    <div className="mx-auto mt-24">
-      <h3>Stay up-to-date with Our programmes and Event</h3>
-      <form className="flex justify-around">
+    <div className="mx-auto mt-24 w-11/12 p-3">
+      <h3 className="text-2xl text-white font-bold w-1/3 tracking-wider">Stay up-to-date with Our programmes and Event</h3>
+      <form className="flex justify-between mt-6">
       <label className="w-3/4 relative block ">
         <span className="absolute inset-y-0 left-2 flex items-center pl-2 justify-center">
           <span className="block w-8 h-8 cursor-pointer">
@@ -19,7 +19,7 @@ const Cta:FC = () => {
         </span>
         <input type="url" className="block transition-all duration-500 ease-in bg-transparent w-full py-4 pl-20 pr-3 shadow-sm outline-none ring-2 focus:ring-curves ring-primaryLight ring-offset-primaryLight ring-offset-1 focus:ring-offset-curves/30 h-[auto] align-middle my-auto rounded-md text-white placeholder:text-white placeholder:text-lg text-lg placeholder:font-bold font-bold placeholder:align-middle placeholder:my-auto self-stretch" placeholder="Email Address" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
-        <button type="submit">Submit</button>
+        <button type="submit" className="text-white bg-primary px-8 py-3 text-center">Submit</button>
       </form>
 
     </div>
