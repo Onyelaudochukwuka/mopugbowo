@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import Head from "next/head";
 import React, { FC, PropsWithChildren } from 'react'
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 const Layout = ({children}:PropsWithChildren<any>) => {
@@ -23,6 +24,7 @@ const Layout = ({children}:PropsWithChildren<any>) => {
       </Head>
       <Navbar />
       {children}
+      <Footer/>
     </div>
   )
 }
