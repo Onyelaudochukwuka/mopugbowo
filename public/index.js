@@ -12,6 +12,7 @@ import pastor from './pastor.png';
 import location from './location.svg';
 import mail from './mail.svg';
 import phone from './phone.svg';
+import footerimg from './footerimg.svg';
 
 
-export { logo, wave1, slide1, slide2, slide3, rightArrow, leftArrow, about1, about2, about3, pastor, location, phone, mail };
+export { logo, wave1, slide1, slide2, slide3, rightArrow, leftArrow, about1, about2, about3, pastor, location, phone, mail, footerimg };
