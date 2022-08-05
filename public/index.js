@@ -9,6 +9,9 @@ import about1 from './about1.png';
 import about2 from './about2.png';
 import about3 from './about3.png';
 import pastor from './pastor.png';
+import location from './location.svg';
+import mail from './mail.svg';
+import phone from './phone.svg';
 
 
-export { logo, wave1, slide1, slide2, slide3, rightArrow, leftArrow, about1, about2, about3, pastor };
+export { logo, wave1, slide1, slide2, slide3, rightArrow, leftArrow, about1, about2, about3, pastor, location, phone, mail };
