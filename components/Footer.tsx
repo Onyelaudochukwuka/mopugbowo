@@ -3,11 +3,17 @@ import Image from "next/image";
 import { footerimg } from "../public";
 const Footer:FC = (props:any) => {
   return (
-    <section className="box-border block bg-dark h-max max-h-screen min-h-[90vh]">
-      <span className="w-full block  absolute"><Image src={footerimg} layout={"responsive"} /></span>
-      <div className="relative z-50 mt-auto bottom-0 text-white translate-y-[90vh] ">
-          <p>Hiii</p>
+    <section className="box-border block bg-dark h-max max-h-screen min-h-[90vh] relative">
+      <div className="absolute z-50 text-white bottom-0 w-full">
+        <div className="flex justify-between w-3/4 mx-auto font-semibold">
+          <span>Home</span>
+          <span>What We Believe</span>
+          <span>Sermons</span>
+          <span>Locations</span>
+          <span>Contact</span>
+        </div>
       </div>
+      <span className="w-full block"><Image src={footerimg} layout={"responsive"} /></span>
       </section>
   )
 }
