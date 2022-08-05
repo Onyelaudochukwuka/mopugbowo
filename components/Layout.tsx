@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 
 const Layout = ({children}:PropsWithChildren<any>) => {
   return (
-      <div className="min-h-screen bg-dark">
+    <div className="min-h-screen bg-dark">
       <Head>
           <meta name="author" content="Onyela Udochukwuka"/>
             <meta name="description" content="Ministry Of Perfection - Ugbowo; Stay up-to-date with Our programmes and Event"/>
@@ -16,6 +16,9 @@ const Layout = ({children}:PropsWithChildren<any>) => {
                       <meta property="og:title" content="Ministry Of Perfection Church - Ugbowo"/>
                         <title>Ministry Of Perfection Church - Ugbowo</title>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+        </style>
     
       </Head>
       <Navbar />
