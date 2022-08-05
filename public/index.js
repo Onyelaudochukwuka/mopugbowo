@@ -19,4 +19,4 @@ import twitter from './twitter.svg';
 import instagram from './instagram.svg';
 
 
-export { logo, wave1, slide1, slide2, slide3, rightArrow, leftArrow, about1, about2, about3, pastor, location, phone, mail, footerimg, email };
+export { logo, wave1, slide1, slide2, slide3, rightArrow, leftArrow, about1, about2, about3, pastor, location, phone, mail, footerimg, email, instagram, twitter, facebook };
