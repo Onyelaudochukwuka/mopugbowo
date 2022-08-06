@@ -14,9 +14,7 @@ module.exports = {
         primaryLight: "#C363FF",
         light: "#F2B80E",
       },
-      backgroundImage: {
-        background: "url(../public/background.jpeg)",
-      }
+      backgroundImage: {background: "url(../public/background.jpeg)"},
     },
     
     
