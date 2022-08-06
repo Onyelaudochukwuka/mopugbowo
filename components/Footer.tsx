@@ -15,7 +15,7 @@ const Footer: FC = () => {
           <span>Contact</span>
         </div>
         <div className="flex items-center justify-between w-3/12">{socials.map((icon: StaticImageData, i: number) => <span key={Id + i} className="w-10 h-10 block"><Image src={icon} layout="responsive" /></span>)}</div>
-        <p>&copy;2020 Ministry Of Perfection CHurch  All Right Reserved</p>
+        <p className="font-bold">&copy;2020 Ministry Of Perfection CHurch  All Right Reserved</p>
         <span className="block w-12 h-12">
           <Image src={logo} layout="responsive"/>
         </span>
