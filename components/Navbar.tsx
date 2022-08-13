@@ -8,11 +8,14 @@ const Navbar: FC = (props: any) => {
   return (
     <nav className="bg-curves w-full flex flex-1 p-4 justify-between items-center px-[8.33%] fixed z-50">
       <span className="w-12 "><Image src={logo} /></span>
-      <div className="flex justify-between basis-6/12 mr-[8.33%] text-white font-bold items-center">
+      <div className="lg:flex justify-between basis-6/12 mr-[8.33%] text-white font-bold items-center hidden">
         {
           content.map((value:string,index:number) => <span key={Id + index} className="relative before:absolute before:-bottom-2 before:w-full before:left-0 before:h-1 before:bg-white before:scale-x-0 before:origin-right before:transition-[transform] before:duration-300 hover:before:scale-100 hover:before:origin-left cursor-pointer">{value}</span>
           )
         }
+      </div>
+      <div className="relative">
+        <span className="block w-16 h-2 relative bg-white rounded-full cursor-pointer before:block before:w-16 before:h-2 before:bg-white before:rounded-full  before:absolute "></span>
       </div>
     </nav>
   )
