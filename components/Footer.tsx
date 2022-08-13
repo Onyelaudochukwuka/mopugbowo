@@ -6,7 +6,7 @@ const Footer: FC = () => {
   const Id = useId();
   return (
     <section className="box-border block bg-dark h-max  relative">
-      <div className="absolute z-10 text-white bottom-24 w-full flex flex-col gap-12 items-center self-end mt-auto">
+      <div className="absolute z-10 text-white lg:bottom-24 bottom-2 w-full flex flex-col gap-12 items-center self-end mt-auto">
         <div className="flex justify-between w-3/4 mx-auto font-semibold">
           <span>Home</span>
           <span>What We Believe</span>
