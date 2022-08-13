@@ -6,7 +6,7 @@ const Cta:FC = () => {
   const [email, setEmail] = useState<string>('')
   return (
     <div className="mx-auto mt-24 w-11/12 p-3 flex flex-col gap-4">
-      <h3 className="text-2xl text-white font-bold tracking-wider">Stay up-to-date with Our programmes and Event</h3>
+      <h3 className="text-2xl text-white font-bold lg:w-1/3 tracking-wider">Stay up-to-date with Our programmes and Event</h3>
       <form className="flex justify-between mt-6">
       <label className="w-3/4 relative block ">
         <span className="absolute inset-y-0 left-2 flex items-center pl-2 justify-center">
