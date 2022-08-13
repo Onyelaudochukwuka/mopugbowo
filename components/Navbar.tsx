@@ -15,7 +15,7 @@ const Navbar: FC = (props: any) => {
         }
       </div>
       <div className="relative">
-        <span className="block w-16 h-2 relative bg-white rounded-full cursor-pointer before:block before:w-16 before:h-2 before:bg-white before:rounded-full  before:absolute "></span>
+        <span className="block w-16 h-1.5 relative bg-white rounded-full cursor-pointer before:w-16 before:h-1.5 before:bg-white before:rounded-full  before:absolute before:bottom-3 after:w-16 after:h-1.5 after:bg-white after:rounded-full  after:absolute after:top-3"></span>
       </div>
     </nav>
   )
