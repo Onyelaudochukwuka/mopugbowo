@@ -1,15 +1,16 @@
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image";
 import React, { FC, useId, useState } from 'react'
 import { pastor, about1, about2, about3 } from "../public";
 import Card from "./Card";
-const about:Data[] = [{
-  icon: about1,
+const about: Data[] = [{
   data: {
+    icon: about1,
     heading: "",
-    details: ""
+    details: "We enjoy fellowship together every week at any of our several locations all over the country. join us this weekend at a location close to you."
   }
 }, about2, about2];
 export interface Data{
+  icon: StaticImageData,
   heading: string;
   details: string;
 }
