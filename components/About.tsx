@@ -10,30 +10,36 @@ const about: About[] = [{
   icon: about1,
   data: {
     heading: "Experience Koinonia",
-    details: "We enjoy fellowship together every week at any of our several locations all over the country. join us this weekend at a location close to you."
+    details: "We enjoy fellowship together every week at any of our several locations all over the country. join us this weekend at a location close to you.",
+    link: "Plan A Visit"
   }
-}, {
+},
+  {
   icon:about2,
   data: {
     heading: "Make Jesus Known",
     details: "It is our dream to take the name of Jesus Christ to every corner of the world in both speech and deeds. Help us make that dream a reality",
+    link: "Give"
   }
-}, {
+},
+{
   icon:about2,
   data: {
     heading: "Labour With Us",
-    details: "The harvest is many and new labourers are stepping forward in their numbers. Join us for an opportunity to serve God with your time and strength"
+    details: "The harvest is many and new labourers are stepping forward in their numbers. Join us for an opportunity to serve God with your time and strength",
+    link: "Serve"
   }
 }];
 export interface Data{
   heading: string;
   details: string;
+  link: string;
 }
 
 const About: FC = () => {
   const Id = useId();
   const [show, setShow] = useState<boolean>(false);
-  const [data, setData] = useState<Data>({ heading: "", details: "" });
+  const [data, setData] = useState<Data>({ heading: "", details: "", link:"" });
   const useSetShow = (): void => {
     return setShow((state) => !state);
   };
@@ -52,7 +58,7 @@ const About: FC = () => {
       </div>
       <div className="flex justify-evenly w-3/4 ml-auto relative right-0 -translate-y-10">
         {about.map(({ icon, data }:About, i) => <span key={Id + i} className="w-48 h-48 block cursor-pointer" onClick={() => { 
-          useSetShow()
+          useSetShow();
           setData(data);
            }}><Image src={icon} layout={"responsive"} /></span>)}
       </div>
