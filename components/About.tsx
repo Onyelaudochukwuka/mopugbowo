@@ -16,7 +16,7 @@ const About: FC = () => {
   };
   return (
     <section className="mt-24">
-      <Card changeState={useSetShow} data={data} />
+      {show && <Card changeState={useSetShow} data={data} />}
     <div className="flex justify-around items-center">
       <span className="h-1/3 block basis-1/3"><Image src={pastor} layout={"responsive"} /></span> 
       <div className="w-full basis-1/3 text-left text-white flex flex-col gap-3">
