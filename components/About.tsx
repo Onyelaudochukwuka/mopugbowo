@@ -2,7 +2,13 @@ import Image from "next/image"
 import React, { FC, useId, useState } from 'react'
 import { pastor, about1, about2, about3 } from "../public";
 import Card from "./Card";
-const about = [about1, about2, about2];
+const about:Data[] = [{
+  icon: about1,
+  data: {
+    heading: "",
+    details: ""
+  }
+}, about2, about2];
 export interface Data{
   heading: string;
   details: string;
@@ -16,7 +22,7 @@ const About: FC = () => {
   };
   return (
     <section className="mt-24">
-      {show && <Card changeState={useSetShow} data={data} />}
+      <Card changeState={useSetShow} data={data} className={`${show ? `scale-100` : `scale-0`} transition-[transform] duration-300 origin-center ease-in`} />
     <div className="flex justify-around items-center">
       <span className="h-1/3 block basis-1/3"><Image src={pastor} layout={"responsive"} /></span> 
       <div className="w-full basis-1/3 text-left text-white flex flex-col gap-3">
@@ -28,7 +34,7 @@ const About: FC = () => {
       </div>
       </div>
       <div className="flex justify-evenly w-3/4 ml-auto relative right-0 -translate-y-10">
-        {about.map((img,i) => <span key={Id + i} className="w-48 h-48 block cursor-pointer"><Image src={img} layout={"responsive"} /></span>)}
+        {about.map((img,i) => <span key={Id + i} className="w-48 h-48 block cursor-pointer" onClick={useSetShow}><Image src={img} layout={"responsive"} /></span>)}
       </div>
     </section>
   )
