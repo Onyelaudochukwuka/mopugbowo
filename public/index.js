@@ -17,7 +17,7 @@ import email from './email.svg';
 import facebook from './facebook.svg';
 import twitter from './twitter.svg';
 import instagram from './instagram.svg';
-import Cancel from './cancel.svg';
+import Cancel from './Cancel';
 
 
 export { logo, wave1, slide1, slide2, slide3, rightArrow, leftArrow, about1, about2, about3, pastor, location, phone, mail, footerimg, email, instagram, twitter, facebook, Cancel };
