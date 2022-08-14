@@ -9,7 +9,7 @@ const Card = ({ changeState, data, className }: { changeState: () => void, data:
         <Cancel className="w-8 h-8 absolute top-4 right-5 cursor-pointer" onClick={changeState} />
               <h1 className="text-2xl font-bold">{heading}</h1>
               <p className="font-semibold text-lg">{details}.</p>
-              <a className="p-8 py-4 bg-curves rounded-full text-white font-bold cursor-pointer">{link}</a>
+              <a className="px-12 py-4 bg-curves rounded-full text-white font-bold cursor-pointer">{link}</a>
           </div>
     </div>
   )
