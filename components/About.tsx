@@ -1,11 +1,22 @@
 import Image from "next/image"
-import React, { FC, useId } from 'react'
+import React, { FC, useId, useState } from 'react'
 import { pastor, about1, about2, about3 } from "../public";
+import Card from "./Card";
 const about = [about1, about2, about2];
+export interface Data{
+  heading: string;
+  details: string;
+}
 const About: FC = () => {
-  const Id = useId()
+  const Id = useId();
+  const [show, setShow] = useState<boolean>(false);
+  const [data, setData] = useState<Data>({ heading: "", details: "" });
+  const useSetShow = (): void => {
+    return setShow((state) => !state);
+  };
   return (
     <section className="mt-24">
+      <Card changeState={useSetShow} data={data} />
     <div className="flex justify-around items-center">
       <span className="h-1/3 block basis-1/3"><Image src={pastor} layout={"responsive"} /></span> 
       <div className="w-full basis-1/3 text-left text-white flex flex-col gap-3">
