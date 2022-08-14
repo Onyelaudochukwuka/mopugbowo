@@ -49,7 +49,7 @@ const About: FC = () => {
     <div className="flex justify-around lg:flex-row items-center flex-col">
       <span className="lg:h-1/3 block lg:basis-1/3 lg:w-full w-3/4 h-auto"><Image src={pastor} layout={"responsive"} /></span> 
       <div className="w-full basis-1/3 text-left text-white flex flex-col gap-3 p-6 lg:p-0">
-          <h1 className="text-white font-bold tracking-widest text-2xl before:content-[''] before:absolute before:w-16 before:h-1 before:rounded-full  before:bg-white  before:mt-8  before:origin-left before:transition-[transform] before:duration-300 hover:before:scale-x-125 ">About US</h1>
+          <h1 className="text-white font-bold tracking-widest text-2xl before:content-[''] before:absolute before:w-16 before:h-1 before:rounded-full  before:bg-white  before:mt-8  before:origin-left before:transition-[transform] before:duration-300 hover:before:scale-x-125 w-fit cursor-pointer">About US</h1>
         <div>
           <h2 className="text-white font-semibold tracking-widest text-xl">Why We Exist</h2>
           <p>Our mission is to bring total salvation and transformation to all men by teaching and preaching the undiluted word of God across the world.</p>
