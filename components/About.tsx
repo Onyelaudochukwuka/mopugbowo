@@ -45,9 +45,9 @@ const About: FC = () => {
   };
   return (
     <section className="mt-24">
-      <Card changeState={useSetShow} data={data} className={`${show ? `scale-100` : `scale-0`} transition-[transform] duration-300 origin-center ease-in`} />
-    <div className="flex justify-around items-center">
-      <span className="h-1/3 block basis-1/3"><Image src={pastor} layout={"responsive"} /></span> 
+      <Card changeState={useSetShow} data={data} className={`${show ? `scale-100` : `scale-0 select-none`} transition-[transform] duration-300 origin-center ease-in`} />
+    <div className="flex justify-around lg:flex-row items-center flex-col">
+      <span className="lg:h-1/3 block lg:basis-1/3 lg:w-full w-3/4 h-auto"><Image src={pastor} layout={"responsive"} /></span> 
       <div className="w-full basis-1/3 text-left text-white flex flex-col gap-3">
           <h1 className="text-white font-bold tracking-widest text-2xl before:content-[''] before:absolute before:w-16 before:h-1 before:rounded-full  before:bg-white  before:mt-8  before:origin-left before:transition-[transform] before:duration-300 hover:before:scale-x-125 ">About US</h1>
         <div>
@@ -56,12 +56,12 @@ const About: FC = () => {
         </div>
       </div>
       </div>
-      <div className="flex justify-evenly w-3/4 ml-auto relative right-0 -translate-y-10">
+      <div className="flex lg:justify-evenly lg:w-3/4 ml-auto relative right-0 lg:-translate-y-10 w-full justify-between">
         {about.map(({ icon, data }:About, i) => <span key={Id + i} className="w-48 h-48 block cursor-pointer" onClick={() => { 
           useSetShow();
           setData(data);
            }}
-          tabIndex={25} onBlur={useSetShow}
+          tabIndex={5} onBlur={useSetShow}
            ><Image src={icon} layout={"responsive"} /></span>)}
       </div>
     </section>
