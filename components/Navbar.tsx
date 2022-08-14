@@ -10,7 +10,7 @@ const Navbar: FC = (props: any) => {
       <span className="w-12 "><Image src={logo} /></span>
       <div className="lg:flex justify-between basis-6/12 mr-[8.33%] text-white font-bold items-center hidden">
         {
-          content.map((value:string,index:number) => <span key={Id + index} className="relative before:absolute before:-bottom-2 before:w-full before:left-0 before:h-1 before:bg-white before:scale-x-0 before:origin-right before:transition-[transform] before:duration-300 hover:before:scale-100 hover:before:origin-left cursor-pointer">{value}</span>
+          content.map((value:string,index:number) => <span key={Id + index} className="relative before:absolute before:-bottom-2 before:w-full before:left-0 before:h-1 before:bg-white before:scale-x-0 before:origin-right before:transition-[transform] before:duration-300 hover:before:scale-100 hover:before:origin-left before:rounded-full cursor-pointer">{value}</span>
           )
         }
       </div>
