@@ -5,7 +5,6 @@ const Home: NextPage = () => {
     <div>
       <Hero />
       <Sermons />
-      <Card />
       <About />
       <Contact />
       <Cta/>
