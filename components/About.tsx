@@ -2,18 +2,34 @@ import Image, { StaticImageData } from "next/image";
 import React, { FC, useId, useState } from 'react'
 import { pastor, about1, about2, about3 } from "../public";
 import Card from "./Card";
-const about: Data[] = [{
+interface About {
+  icon: StaticImageData,
+  data: Data,
+}
+const about: About[] = [{
+  icon: about1,
   data: {
-    icon: about1,
-    heading: "",
+    heading: "Experience Koinonia",
     details: "We enjoy fellowship together every week at any of our several locations all over the country. join us this weekend at a location close to you."
   }
-}, about2, about2];
+}, {
+  icon:about2,
+  data: {
+    heading: "Make Jesus Known",
+    details: "It is our dream to take the name of Jesus Christ to every corner of the world in both speech and deeds. Help us make that dream a reality",
+  }
+}, {
+  icon:about2,
+  data: {
+    heading: "Labour With Us",
+    details: "The harvest is many and new labourers are stepping forward in their numbers. Join us for an opportunity to serve God with your time and strength"
+  }
+}];
 export interface Data{
-  icon: StaticImageData,
   heading: string;
   details: string;
 }
+
 const About: FC = () => {
   const Id = useId();
   const [show, setShow] = useState<boolean>(false);
@@ -35,7 +51,10 @@ const About: FC = () => {
       </div>
       </div>
       <div className="flex justify-evenly w-3/4 ml-auto relative right-0 -translate-y-10">
-        {about.map((img,i) => <span key={Id + i} className="w-48 h-48 block cursor-pointer" onClick={useSetShow}><Image src={img} layout={"responsive"} /></span>)}
+        {about.map(({ icon, data }:About, i) => <span key={Id + i} className="w-48 h-48 block cursor-pointer" onClick={() => { 
+          useSetShow()
+          setData(data);
+           }}><Image src={icon} layout={"responsive"} /></span>)}
       </div>
     </section>
   )
