@@ -60,7 +60,9 @@ const About: FC = () => {
         {about.map(({ icon, data }:About, i) => <span key={Id + i} className="w-48 h-48 block cursor-pointer" onClick={() => { 
           useSetShow();
           setData(data);
-           }}><Image src={icon} layout={"responsive"} /></span>)}
+           }}
+          tabIndex={25} onBlur={useSetShow}
+           ><Image src={icon} layout={"responsive"} /></span>)}
       </div>
     </section>
   )
