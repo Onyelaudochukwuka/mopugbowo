@@ -10,4 +10,5 @@ const blogSchema = new Schema<BlogPost>({
         },
         title: String
 });
+
 module.exports = models.Url || model('Url', blogSchema);
