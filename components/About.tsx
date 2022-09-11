@@ -51,7 +51,6 @@ const About: FC = () => {
     return setShow((state) => !state);
   };
   const { span: Span, div: Div } = motion;
-  console.log(isInView)
   return (
     <section className="mt-24">
       <Card changeState={useSetShow} data={data} className={`${show ? `scale-100` : `scale-0 select-none`} transition-[transform] duration-300 origin-center ease-in`} />
