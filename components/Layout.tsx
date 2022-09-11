@@ -22,9 +22,11 @@ const Layout = ({children}:PropsWithChildren<any>) => {
         </style>
     
       </Head>
+      <section className="flex flex-col gap-8 min-h-screen">
       <Navbar />
       {children}
-      <Footer/>
+        <Footer />
+      </section>
     </div>
   )
 }
