@@ -7,8 +7,8 @@ const Slides: FC = () => {
   const Id = useId();
 
   return (
-    <div className="flex w-full items-center justify-center mt-24 z-10">
-      <span className="w-16 h-16 block translate-x-56 z-10 cursor-pointer"
+    <div className="flex w-full items-center justify-center mt-24 z-10 relative">
+      <span className="w-16 h-16 block lg:translate-x-56 cursor-pointer lg:relative absolute -left-6 z-50"
         onClick={()=>{
           setImages((prev)=>{
             const newArr = [...prev];
@@ -18,11 +18,12 @@ const Slides: FC = () => {
           })
         }}
       ><Image src={leftArrow} layout={"responsive"}/></span>
-      <div className="flex justify-center items-center w-full">
-        {images.map((img, i) => <span key={Id + i} className={`${i % 2 !== 1 ? `scale-75 shadow-[0px_0px_15px_7.5px_rgba(0,0,0,0.25)] hover:shadow-[0px_0px_20px_10px_rgba(0,0,0,0.25)] ${(i + 1) % 3 !== 0 ? `translate-x-36` : `-translate-x-36`}` : `scale-125 z-20 shadow-[0px_0px_25px_12.5px_rgba(0,0,0,0.25)] hover:shadow-[0px_0px_40px_20px_rgba(0,0,0,0.25)]`} w-1/2 h-fit block transition-all duration-500 ease-in`}><Image src={img} layout={"responsive"} /></span>
+      <div className="flex items-center w-full">
+        {images.map((img, i) =>
+          <span key={Id + i} className={`${i % 2 !== 1 ? `shadow-[0px_0px_15px_7.5px_rgba(0,0,0,0.25)] hover:shadow-[0px_0px_20px_10px_rgba(0,0,0,0.25)] ${(i + 1) % 3 !== 0 ? `lg:translate-x-36` : `lg:-translate-x-36`}` : `z-20 scale-150 shadow-[0px_0px_25px_12.5px_rgba(0,0,0,0.25)] hover:shadow-[0px_0px_40px_20px_rgba(0,0,0,0.25)]`} lg:w-1/2 w-[100vw] h-auto block transition-all duration-500 ease-in basis-full`}><Image src={img} layout={"responsive"} /></span>
           )}
       </div>
-      <span className="w-16 h-16 -translate-x-56 block cursor-pointer"
+      <span className="w-16 h-16 lg:-translate-x-56 lg: block cursor-pointer absolute lg:relative -right-6  z-50"
         onClick={() => {
           setImages((prev) => {
             const newArr = [...prev];
