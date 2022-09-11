@@ -1,6 +1,8 @@
+import { motion } from "framer-motion"
 import React, { FC } from 'react'
 
-const Hero:FC = () => {
+const Hero: FC = () => {
+  const { div: Div } = motion;
   return (
     <div className="h-screen bg-background bg-center bg-cover bg-no-repeat flex justify-center items-center flex-col text-white font-bold gap-4 relative">
       <p className="lg:text-3xl font-extrabold text-center text-lg">Church Is Not Just The Physical Building<br/> But It Is The Ground And Pillar Of Truth.</p>
