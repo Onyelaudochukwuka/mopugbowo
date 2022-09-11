@@ -8,7 +8,6 @@ import {
     Descendant,
     Element as SlateElement,
 } from 'slate'
-import { withHistory } from 'slate-history'
 
 import { Button, Icon, Toolbar } from './components';
 
@@ -22,12 +21,11 @@ const HOTKEYS:any = {
 const LIST_TYPES = ['numbered-list', 'bulleted-list']
 const TEXT_ALIGN_TYPES = ['left', 'center', 'right', 'justify']
 
-const RichTextExample = () => {
+const RichTextExample = ({editor}:any) => {
     const renderElement = useCallback((props: any) => <Element {...props} />, [])
     const renderLeaf = useCallback((props: any) => <Leaf {...props} />, [])
-    const editor = useMemo(() => withHistory(withReact(createEditor())), [])
     return (
-        <section className="bg-white w-3/4 mx-auto my-12">
+        <section className="bg-white rounded-sm">
         <Slate editor={editor} value={initialValue}>
             <Toolbar>
                 <MarkButton format="bold" icon="format_bold" />
