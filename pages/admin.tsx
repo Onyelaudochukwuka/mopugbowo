@@ -1,4 +1,4 @@
-import  React, { FC, useMemo } from 'react';
+import  React, { FC, useEffect, useMemo } from 'react';
 import { Editor } from "../components";
 import { Editable, withReact, useSlate, Slate } from 'slate-react'
 import { withHistory } from 'slate-history';
@@ -9,7 +9,9 @@ export interface IadminProps {
 
 const admin: FC<IadminProps> = () => {
   const editor = useMemo(() => withHistory(withReact(createEditor())), [])
-  
+  useEffect(() => {
+    console.log(editor);
+  },[])
   return (
     <div className="w-3/4 mx-auto flex flex-col gap-6">
       <div className="">
