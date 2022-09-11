@@ -6,7 +6,7 @@ import { useScroll } from "framer-motion";
 const content = ["Home", "About Us", "Blog", "Contact Us","Give"]
 const Navbar: FC = () => {
   const [yDistance, setYDistance] = useState<number>(0);
-  const [dropDown, setDropDown] = useState<boolean>(true);
+  const [dropDown, setDropDown] = useState<boolean>(false);
   useEffect(() => {
     const Interval = setInterval(() => setYDistance(scrollY), 1000);
     return () => {
