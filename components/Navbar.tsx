@@ -1,12 +1,21 @@
-import React, { FC, useId } from 'react'
+import React, { FC, useEffect, useId, useState } from 'react'
 import  Image from 'next/image';
 import { logo } from '../public';
 import Link from "next/link";
+import { useScroll } from "framer-motion";
 const content = ["Home", "About Us", "Blog", "Contact Us","Give"]
-const Navbar: FC = (props: any) => {
+const Navbar: FC = () => {
+  const [yDistance, setYDistance] = useState(0);
+  useEffect(() => {
+    const Interval = setInterval(() => setYDistance(scrollY), 1000);
+    return () => {
+      clearInterval(Interval)
+    }
+  },[])
+
   const Id: string = useId();
   return (
-    <nav className="bg-curves w-full flex flex-1 p-4 justify-between items-center px-[8.33%] fixed z-50">
+    <nav className={`${yDistance > 100 ? `bg-curves` : `bg-transparent` } transition-colors duration-500 ease-in w-full flex flex-1 p-4 justify-between items-center px-[8.33%] fixed z-50`}>
       <span className="w-12 "><Image src={logo} /></span>
       <div className="lg:flex justify-between basis-6/12 mr-[8.33%] text-white font-bold items-center hidden">
         {
