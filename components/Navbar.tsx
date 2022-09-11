@@ -17,7 +17,6 @@ const Navbar: FC = () => {
 
   const Id: string = useId();
   const { route } = useRouter();
-  console.log(route)
   return (
     <nav className={`${yDistance > 100 ? `bg-curves` : `bg-transparent` } transition-colors duration-500 ease-in w-full flex flex-1 p-4 justify-between items-center px-[8.33%] ${route !== `/` ? `relative` :`fixed`} z-40`}>
       <span className="w-12 "><Image src={logo} /></span>
