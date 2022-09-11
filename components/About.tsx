@@ -1,5 +1,6 @@
+import { motion, useInView } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
-import React, { FC, useId, useState } from 'react'
+import React, { FC, useId, useRef, useState } from 'react'
 import { pastor, about1, about2, about3 } from "../public";
 import Card from "./Card";
 interface About {
@@ -39,15 +40,18 @@ export interface Data{
 const About: FC = () => {
   const Id = useId();
   const [show, setShow] = useState<boolean>(false);
-  const [data, setData] = useState<Data>({ heading: "", details: "", link:"" });
+  const [data, setData] = useState<Data>({ heading: "", details: "", link: "" });
+  const imageContainerEl = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(imageContainerEl,{once: true})
   const useSetShow = (): void => {
     return setShow((state) => !state);
   };
+  const { span: Span } = motion;
   return (
     <section className="mt-24">
       <Card changeState={useSetShow} data={data} className={`${show ? `scale-100` : `scale-0 select-none`} transition-[transform] duration-300 origin-center ease-in`} />
     <div className="flex justify-around lg:flex-row items-center flex-col">
-      <span className="lg:h-1/3 block lg:basis-1/3 lg:w-full w-3/4 h-auto"><Image src={pastor} layout={"responsive"} /></span> 
+        <Span ref={imageContainerEl} className="lg:h-1/3 block lg:basis-1/3 lg:w-full w-3/4 h-auto"><Image src={pastor} layout={"responsive"} /></Span> 
       <div className="w-full basis-1/3 text-left text-white flex flex-col gap-3 p-6 lg:p-0">
           <h1 className="text-white font-bold tracking-widest text-2xl before:content-[''] before:absolute before:w-16 before:h-1 before:rounded-full  before:bg-white  before:mt-8  before:origin-left before:transition-[transform] before:duration-300 hover:before:scale-x-125 w-fit cursor-pointer">About US</h1>
         <div>
