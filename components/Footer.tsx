@@ -5,7 +5,7 @@ const socials:StaticImageData[] = [facebook, twitter, instagram];
 const Footer: FC = () => {
   const Id = useId();
   return (
-    <section className="box-border block bg-curves h-max py-8 mt-8 relative">
+    <section className="box-border block bg-curves lg:bg-transparent h-max py-8 lg:py-0 mt-8 relative">
       <div className="lg:absolute relative z-10 text-white lg:bottom-24 w-full flex flex-col gap-12 items-center self-end mt-auto">
         <div className="flex justify-between w-3/4 mx-auto flex-col lg:flex-row gap-6 font-semibold">
           <span>Home</span>
