@@ -25,7 +25,7 @@ const RichTextExample = ({editor}:any) => {
     const renderElement = useCallback((props: any) => <Element {...props} />, [])
     const renderLeaf = useCallback((props: any) => <Leaf {...props} />, [])
     return (
-        <section className="bg-white rounded-sm">
+        <section className="bg-primaryLight p-6 rounded-sm">
         <Slate editor={editor} value={initialValue}>
             <Toolbar>
                 <MarkButton format="bold" icon="format_bold" />
@@ -48,7 +48,7 @@ const RichTextExample = ({editor}:any) => {
                 placeholder="Enter some rich text…"
                 spellCheck
                 autoFocus
-                
+                className="p-3"
                 onKeyDown={event => {
                     for (const hotkey in HOTKEYS) {
                         if (isHotkey(hotkey, event as any)) {
@@ -141,7 +141,7 @@ const Element = ({ attributes, children, element }:any) => {
             )
         case 'bulleted-list':
             return (
-                <ul style={style} {...attributes}>
+                <ul className="list-disc" style={style} {...attributes}>
                     {children}
                 </ul>
             )
@@ -165,7 +165,7 @@ const Element = ({ attributes, children, element }:any) => {
             )
         case 'numbered-list':
             return (
-                <ol style={style} {...attributes}>
+                <ol className="list-decimal" style={style} {...attributes}>
                     {children}
                 </ol>
             )
