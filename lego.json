@@ -2,8 +2,9 @@
   "blocks": [
     {
       "type": "component",
-      "path": "src/components",
-      "files": ["JSX", "CSS", "TEST"]
+      "path": "./components",
+      "isFile": true,
+      "file": "TSX"
     },
     {
       "type": "page",
