@@ -25,7 +25,7 @@ const RichTextExample = ({ editor, setToggle }:any) => {
     const renderElement = useCallback((props: any) => <Element {...props} />, [])
     const renderLeaf = useCallback((props: any) => <Leaf {...props} />, [])
     return (
-        <section className="bg-white p-6 rounded-sm">
+        <section className="bg-white p-6 rounded-md">
         <Slate editor={editor} value={initialValue}>
             <Toolbar>
                 <MarkButton format="bold" icon="format_bold" />
@@ -116,10 +116,10 @@ const isBlockActive = (editor:any, format:any, blockType:string = 'type') => {
     const [match] = Array.from(
         Editor.nodes(editor, {
             at: Editor.unhangRange(editor, selection),
-            match: (n: { type: string} ) =>
+            match: (n: object ) =>
                 !Editor.isEditor(n) &&
                 SlateElement.isElement(n) &&
-                n.type === format,
+                n[blockType] === format,
         })
     )
 
