@@ -15,17 +15,17 @@ const HOTKEYS:any = {
     'mod+b': 'bold',
     'mod+i': 'italic',
     'mod+u': 'underline',
-    'mod+`': 'code',
+    'mod+`': 'code'
 }
 
 const LIST_TYPES = ['numbered-list', 'bulleted-list']
 const TEXT_ALIGN_TYPES = ['left', 'center', 'right', 'justify']
 
-const RichTextExample = ({editor}:any) => {
+const RichTextExample = ({ editor, setToggle }:any) => {
     const renderElement = useCallback((props: any) => <Element {...props} />, [])
     const renderLeaf = useCallback((props: any) => <Leaf {...props} />, [])
     return (
-        <section className="bg-primaryLight p-6 rounded-sm">
+        <section className="bg-white p-6 rounded-sm">
         <Slate editor={editor} value={initialValue}>
             <Toolbar>
                 <MarkButton format="bold" icon="format_bold" />
@@ -48,15 +48,16 @@ const RichTextExample = ({editor}:any) => {
                 placeholder="Enter some rich text…"
                 spellCheck
                 autoFocus
-                className="p-3"
-                onKeyDown={event => {
-                    for (const hotkey in HOTKEYS) {
-                        if (isHotkey(hotkey, event as any)) {
-                            event.preventDefault()
-                            const mark: any = HOTKEYS[hotkey];
-                            toggleMark(editor, mark)
+                    className="p-3"
+                    onKeyPress={() => setToggle((prev: boolean) => !prev)}
+                    onKeyDown={event => {
+                        for (const hotkey in HOTKEYS) {
+                            if (isHotkey(hotkey, event as any)) {
+                                event.preventDefault()
+                                const mark: any = HOTKEYS[hotkey];
+                                toggleMark(editor, mark);
+                            }
                         }
-                    }
                 }}
             />
             </Slate>
@@ -73,12 +74,12 @@ const toggleBlock = (editor:any, format:any) => {
     const isList = LIST_TYPES.includes(format)
 
     Transforms.unwrapNodes(editor, {
-        match: (n:any) =>
+        match: (n:  { type: string } ) =>
             !Editor.isEditor(n) &&
             SlateElement.isElement(n) &&
             LIST_TYPES.includes(n.type) &&
             !TEXT_ALIGN_TYPES.includes(format),
-        split: true,
+            split: true,
     })
     let newProperties: Partial<SlateElement & any>
     if (TEXT_ALIGN_TYPES.includes(format)) {
@@ -108,17 +109,17 @@ const toggleMark = (editor:any, format:any) => {
     }
 }
 
-const isBlockActive = (editor:any, format:any, blockType:any = 'type') => {
+const isBlockActive = (editor:any, format:any, blockType:string = 'type') => {
     const { selection } = editor
     if (!selection) return false
 
     const [match] = Array.from(
         Editor.nodes(editor, {
             at: Editor.unhangRange(editor, selection),
-            match: (n:object) =>
+            match: (n: { type: string} ) =>
                 !Editor.isEditor(n) &&
                 SlateElement.isElement(n) &&
-                n[blockType] === format,
+                n.type === format,
         })
     )
 
@@ -135,7 +136,7 @@ const Element = ({ attributes, children, element }:any) => {
     switch (element.type) {
         case 'block-quote':
             return (
-                <blockquote style={style} {...attributes}>
+                <blockquote className="italic text-[rgb(170,170,170)] pl-[10px] border-l-2 border-solid border-[rgb(221,221,221)]" style={style} {...attributes}>
                     {children}
                 </blockquote>
             )
@@ -147,13 +148,13 @@ const Element = ({ attributes, children, element }:any) => {
             )
         case 'heading-one':
             return (
-                <h1 style={style} {...attributes}>
+                <h1 className="text-xl font-bold" style={style} {...attributes}>
                     {children}
                 </h1>
             )
         case 'heading-two':
             return (
-                <h2 style={style} {...attributes}>
+                <h2 className="text-lg font-bold" style={style} {...attributes}>
                     {children}
                 </h2>
             )
@@ -184,7 +185,7 @@ const Leaf = ({ attributes, children, leaf }:any) => {
     }
 
     if (leaf.code) {
-        children = <code>{children}</code>
+        children = <code className="font-mono p-[3px] bg-[rgb(238,238,238)]">{children}</code>
     }
 
     if (leaf.italic) {
@@ -232,7 +233,7 @@ const MarkButton = ({ format, icon }:any) => {
     )
 }
 
-const initialValue: Descendant[] & any = [
+export const initialValue: Descendant[] & any = [
     {
         type: 'paragraph',
         children: [
