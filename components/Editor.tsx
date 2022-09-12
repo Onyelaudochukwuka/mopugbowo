@@ -25,7 +25,7 @@ const RichTextExample = ({ editor, setToggle }:any) => {
     const renderElement = useCallback((props: any) => <Element {...props} />, [])
     const renderLeaf = useCallback((props: any) => <Leaf {...props} />, [])
     return (
-        <section className="bg-white p-6 rounded-md z-0 chi">
+        <section className="bg-white p-6 rounded-md z-0">
         <Slate editor={editor} value={initialValue}>
             <Toolbar>
                 <MarkButton format="bold" icon="format_bold" />
