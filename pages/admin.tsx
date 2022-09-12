@@ -12,12 +12,12 @@ export interface IadminProps {
 const admin: FC<IadminProps> = () => {
   const editor = useMemo(() => withHistory(withReact(createEditor())), [])
   const [input, setInput] = useState<string>("");
+  const [excerptInput, setExcerptInput] = useState<string>("");
   const [toggle, setToggle] = useState<boolean>(false);
-  const [blogPost, setBlogPost] = useState<BlogPost>({ date: Date.now(), post: initialValue, title: "" });
+  const [blogPost, setBlogPost] = useState<BlogPost>({ date: Date.now(), post: initialValue, title: "", excerpt: "" });
   useEffect(() => {
-    setBlogPost(prev => ({ ...prev, date: Date.now(), post: editor.children, title: input }));
-    console.log(editor.children)
-  },[input, editor, toggle])
+    setBlogPost(prev => ({ ...prev, date: Date.now(), post: editor.children, title: input, excerpt: excerptInput }));
+  }, [input, editor, toggle, excerptInput]);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     postBlogPost(blogPost);
@@ -28,9 +28,17 @@ const admin: FC<IadminProps> = () => {
       className="w-3/4 mx-auto flex flex-col gap-6">
       <div className="">
         <label className="text-white text-2xl font-bold">Title:</label>
-        <input required name="heading" value={input} onChange={(e) => setInput(e.target.value)} type={"text"} className="py-2 px-4 outline-none w-full rounded-sm focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700" />
+        <input required name="heading" value={input} onChange={(e) => setInput(e.target.value)} type={"text"} className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700" />
+      </div>
+      <div className="flex flex-col">
+        <label className="text-white text-2xl font-bold">Excerpt:</label>
+        <textarea required value={excerptInput} onChange={(e) => setExcerptInput(e.target.value)}
+          className="p-6 rounded-md">
+
+        </textarea>
       </div>
       <div>
+
       <p className="text-white text-2xl font-bold">Details:</p>
         <Editor {...{ editor, setToggle }} />
       </div>
