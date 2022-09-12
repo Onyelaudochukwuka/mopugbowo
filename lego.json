@@ -5,6 +5,11 @@
       "path": "./components",
       "isFile": true,
       "file": "TSX"
+    },{
+      "type": "icon",
+      "path": "./components/icon",
+      "isFile": true,
+      "file": "TSX"
     },
     {
       "type": "page",
