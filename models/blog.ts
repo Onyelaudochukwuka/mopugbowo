@@ -1,12 +1,9 @@
-import {Schema, model, models} from "mongoose";
-interface BlogPost{
+import { Schema, model, models } from "mongoose";
+import type { Descendant } from 'slate';
+export interface BlogPost{
         date: number;
         title: string;
-        post: {
-                type: string,
-                children: { text: string }[]
-
-        }[]
+        post: Descendant[];
 }
 const blogSchema = new Schema<BlogPost>({
         date: {
