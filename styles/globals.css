@@ -5,3 +5,9 @@
     body {
         font-family: 'Poppins', sans-serif;
     }
+.chi > *{
+    z-index: 0;
+}
+.chi > * + *{
+    z-index: 0;
+}
