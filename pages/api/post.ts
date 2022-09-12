@@ -3,14 +3,14 @@ import dbConnect from '../../lib/dbConnect';
 const Blog = require('../../models/blog');
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { method } = req;
-    const { post, heading, date } = req.body;
+    const { post, title, date, excerpt } = req.body;
     console.log(req.body);
     await dbConnect()
     switch (method) {
         case 'POST':
 
                 try {
-                    const blog = await Blog.create({ post, heading, date });
+                    const blog = await Blog.create({ post, title, date, excerpt });
                     res.status(201).json({ success: true, data: blog })
                 }
                 catch (error: any) {
