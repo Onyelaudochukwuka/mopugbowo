@@ -3,6 +3,7 @@ import type { Descendant } from 'slate';
 export interface BlogPost{
         date: number;
         title: string;
+        excerpt: string;
         post: PostSchema[] | Descendant[];
 }
 
@@ -48,6 +49,7 @@ const blogSchema = new Schema<BlogPost>({
                 default: Date.now()
         },
         title: String,
+        excerpt: String,
         post: [postSchema]
         
 });
