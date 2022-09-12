@@ -1,49 +1,24 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../lib/dbConnect';
-const Url = require('../../models/Url');
-const validUrl = require('valid-url');
-const shortid = require('shortid');
+const Blog = require('../../models/blog');
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { method } = req;
-    const { longUrl } = req.body;
-    const baseUrl = process.env.BASE_URL;
+    const { post, heading, date } = req.body;
     await dbConnect()
 
     switch (method) {
         case 'POST':
-            if (!validUrl.isUri(baseUrl)) {
-                return res.status(401).json({ error: 'invalid base url' });
-            }
-            const Code = shortid.generate();
-            const urlCode = Code;
-            if (validUrl.isUri(longUrl)) {
+            if (!!post && !!heading && !!date) { 
                 try {
-                    let url = await Url.findOne({ longUrl });
-                    if (url) {
-                        res.status(200).json(url);
-                    } else {
-                        const shortUrl = baseUrl + urlCode;
-
-                        url = new Url({
-                            longUrl,
-                            shortUrl,
-                            urlCode,
-                            linkClicks: 0,
-                            date: new Date()
-                        });
-                        await url.save();
-
-                        res.status(200).json(url);
-                    }
-                } catch (err) {
-                    console.error(err);
-                    res.status(500).json({ error: 'Server error' });
+                    const url = await Blog.create({ post, heading, date });
+                    res.status(201).json({ success: true, data: url })
                 }
+                catch (error: any) {
+                    res.status(400).json({ success: false, message: error.message });
+                }
+            } else {
+                res.status(400).json({ success: false, message: "Please enter all fields" });
             }
-            else {
-                res.status(401).json({ error: 'Invalid long url' });
-            }
-            break
         default:
             res.status(400).json({ success: false })
             break
