@@ -9,7 +9,7 @@
       "type": "icon",
       "path": "./components/icon",
       "isFile": true,
-      "file": "TSX"
+      "file": "ICON"
     },
     {
       "type": "page",
@@ -54,6 +54,10 @@
     "TSX":{
         "name": "<name>.tsx",
         "template": "./template/page.tsx"
+    },
+    "ICON": {
+      "name": "<name>.tsx",
+      "template": "./template/icon.tsx"
     },
     "CSS": {
       "name": "<name>.css"
