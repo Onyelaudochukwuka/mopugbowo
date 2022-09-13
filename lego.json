@@ -15,7 +15,13 @@
       "type": "page",
       "path": "pages",
       "isFile": true,
-      "file": "TSX"
+      "file": "TSXPAGE"
+    },
+    {
+      "type": "slug",
+      "path": "pages",
+      "isFile": true,
+      "file": "TSXPAGESLUG"
     },{
       "type": "models",
       "path": "./models",
@@ -53,7 +59,15 @@
     },
     "TSX":{
         "name": "<name>.tsx",
+        "template": "./template/component.tsx"
+    },
+    "TSXPAGE":{
+        "name": "<name>.tsx",
         "template": "./template/page.tsx"
+    },
+    "TSXPAGESLUG":{
+        "name": "<name>.tsx",
+        "template": "./template/slugPage.tsx"
     },
     "ICON": {
       "name": "<name>.tsx",
