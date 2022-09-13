@@ -24,19 +24,24 @@ const admin: FC<IadminProps> = () => {
   }, [input, editor, toggle, excerptInput]);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setToggle(true);
     postBlogPost(blogPost)
-    .then(res => {
+    .then((res) => {
       console.log(res);
+      setToggle(false);
       setSubmitted(true);
     })
-    .catch(err => console.log(err));
+    .catch ((err) => {
+      setToggle(false);
+      console.log(err)
+});
   }
   return (
     <form
     onSubmit={handleSubmit}
       className="w-3/4 mx-auto flex flex-col gap-6">
       <PopUp toggle={submitted} close={() => setSubmitted(false)} />
-      <Loading />
+      <Loading toggle={toggle} />
       <div className="">
         <label className="text-white text-2xl font-bold">Title:</label>
         <input required name="heading" value={input} onChange={(e) => setInput(e.target.value)} type={"text"} className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700" />
