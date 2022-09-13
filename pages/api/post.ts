@@ -4,7 +4,6 @@ const Blog = require('../../models/blog');
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { method } = req;
     const { post, title, date, excerpt } = req.body;
-    console.log(req.body);
     await dbConnect()
     switch (method) {
         case 'POST':
