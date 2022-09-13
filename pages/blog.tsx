@@ -26,8 +26,10 @@ const blog: NextPage<IblogProps> = () => {
     <section>
       {
         posts.length > 0
-      ?
-        posts.map((post: BlogPost) => (<PostCard {...post} />))
+          ?
+          <div className="flex flex-col">
+            {posts.map((post: BlogPost) => (<PostCard {...post} />))}
+          </div>
           : 
           "Loading..."
       }
