@@ -15,19 +15,26 @@ const admin: FC<IadminProps> = () => {
   const [input, setInput] = useState<string>("");
   const [excerptInput, setExcerptInput] = useState<string>("");
   const [toggle, setToggle] = useState<boolean>(false);
+  const [submitted, setSubmitted] = useState<boolean>(false);
+
   const [blogPost, setBlogPost] = useState<BlogPost>({ date: Date.now(), post: initialValue, title: "", excerpt: "" });
   useEffect(() => {
     setBlogPost(prev => ({ ...prev, date: Date.now(), post: editor.children, title: input, excerpt: excerptInput }));
   }, [input, editor, toggle, excerptInput]);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    postBlogPost(blogPost);
+    postBlogPost(blogPost)
+    .then(res => {
+      console.log(res);
+      setSubmitted(true);
+    })
+    .catch(err => console.log(err));
   }
   return (
     <form
     onSubmit={handleSubmit}
       className="w-3/4 mx-auto flex flex-col gap-6">
-      <PopUp />
+      <PopUp toggle={submitted} close={()=> setSubmitted(false)} />
       <div className="">
         <label className="text-white text-2xl font-bold">Title:</label>
         <input required name="heading" value={input} onChange={(e) => setInput(e.target.value)} type={"text"} className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700" />
