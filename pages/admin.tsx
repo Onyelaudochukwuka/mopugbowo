@@ -15,10 +15,11 @@ const admin: FC<IadminProps> = () => {
   const editor = useMemo(() => withHistory(withReact(createEditor())), [])
   const [input, setInput] = useState<string>("");
   const [excerptInput, setExcerptInput] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>("");
   const [toggle, setToggle] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
 
-  const [blogPost, setBlogPost] = useState<BlogPost>({ date: Date.now(), post: initialValue, title: "", excerpt: "" });
+  const [blogPost, setBlogPost] = useState<BlogPost>({ date: Date.now(), post: initialValue, title: "", excerpt: "" , image_url: imageUrl});
   useEffect(() => {
     setBlogPost(prev => ({ ...prev, date: Date.now(), post: editor.children, title: input, excerpt: excerptInput }));
   }, [input, editor, toggle, excerptInput]);
