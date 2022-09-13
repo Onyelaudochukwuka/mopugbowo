@@ -5,9 +5,9 @@ export interface IblockNameProps {
 
 const blockName: FC<IblockNameProps> = (props) => {
   return (
-    <div>
-      
-    </div>
+    <section>
+      blockName
+    </section>
   );
 }
 export default blockName;
