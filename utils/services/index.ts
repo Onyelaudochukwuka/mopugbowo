@@ -11,3 +11,12 @@ export const postBlogPost = async (data: BlogPost) => {
     })
     return res.json()
 }
+export const getPosts = async () => { 
+    const res = await fetch('/api/getPosts', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    return res.json()
+}
