@@ -1,9 +1,9 @@
-import  React, { FC } from 'react';
+import type { NextPage } from 'next'
 
 export interface IblockNameProps {
 }
 
-const blockName: FC<IblockNameProps> = (props) => {
+const blockName: NextPage<IblockNameProps> = () => {
   return (
     <section>
       blockName
