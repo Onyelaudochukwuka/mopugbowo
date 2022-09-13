@@ -4,6 +4,7 @@ export interface BlogPost{
         date: number;
         title: string;
         excerpt: string;
+        image_url: string;
         post: PostSchema[] | Descendant[];
 }
 
@@ -48,6 +49,7 @@ const blogSchema = new Schema<BlogPost>({
                 type: Number,
                 default: Date.now()
         },
+        image_url: String,
         title: String,
         excerpt: String,
         post: [postSchema]
