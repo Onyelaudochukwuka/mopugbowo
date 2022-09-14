@@ -5,6 +5,7 @@ export interface BlogPost{
         title: string;
         excerpt: string;
         image_url: string;
+        slug: string;
         post: PostSchema[] | Descendant[];
 }
 
@@ -15,9 +16,23 @@ interface ChildSchema {
         code: boolean;
         italic: boolean;
         underline: boolean;
+        type: string;
+        children: ChildOfChildSchema[];
 }
-const childSchema = new Schema<ChildSchema>({
-        text: String,
+interface ChildOfChildSchema {
+        text: string;
+        bold: boolean;
+        align: string;
+        code: boolean;
+        italic: boolean;
+        underline: boolean;
+}
+const childOfChildSchema = new Schema<ChildOfChildSchema>({
+        text: {
+                type: String,
+                default: "",
+                required: true
+        },
         bold: {
                 type: Boolean,
                 default: false
@@ -36,6 +51,31 @@ const childSchema = new Schema<ChildSchema>({
                 default: false
         }
 });
+const childSchema = new Schema<ChildSchema>({
+        text: String,
+        "type": {
+                type: String,
+                default: ""
+        },
+        bold: {
+                type: Boolean,
+                default: false
+        },
+        align: String,
+        code: {
+                type: Boolean,
+                default: false
+        },
+        italic: {
+                type: Boolean,
+                default: false
+        },
+        underline: {
+                type: Boolean,
+                default: false
+        },
+        children: [childOfChildSchema]
+});
 interface PostSchema {
         type: string;
         children: ChildSchema[];
@@ -52,7 +92,8 @@ const blogSchema = new Schema<BlogPost>({
         image_url: String,
         title: String,
         excerpt: String,
-        post: [postSchema]
+        slug: String,
+        post: [postSchema],
         
 });
 
