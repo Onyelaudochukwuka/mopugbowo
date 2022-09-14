@@ -5,23 +5,10 @@ import { BlogPost } from "../models/blog";
 import { getPosts } from "../utils/services";
 
 export interface IblogProps {
+  posts: any;
 }
 
-const blog: NextPage<IblogProps> = () => {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    getPosts()
-      .then((res) => {
-      setPosts(res.data);
-      console.log(res);
-    }
-    )
-      .catch((err) => {
-        console.log(err);
-      }
-      );
-  }, [])
-  console.log(posts);
+const blog: NextPage<IblogProps> = ({ posts }) => {
   return (
     <section>
       {
@@ -35,5 +22,10 @@ const blog: NextPage<IblogProps> = () => {
       }
     </section>
   );
+}
+blog.getInitialProps = async ({ query }: any) => {
+  const { slug } = query;
+  const data = await getPosts();
+  return { slug, posts: data.data };
 }
 export default blog;
