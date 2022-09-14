@@ -10,7 +10,7 @@ export interface BlogPost{
         post: PostSchema[];
 }
 
-interface ChildSchema {
+export interface ChildSchema {
         _id: string;
         text: string;
         bold?: boolean;
