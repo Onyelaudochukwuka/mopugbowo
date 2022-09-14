@@ -6,7 +6,7 @@ export interface BlogPost{
         excerpt: string;
         image_url: string;
         slug: string;
-        post: PostSchema[] | Descendant[];
+        post: PostSchema[];
 }
 
 interface ChildSchema {
