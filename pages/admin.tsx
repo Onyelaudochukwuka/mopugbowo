@@ -8,6 +8,8 @@ import { initialValue } from "../components/Editor";
 import { postBlogPost } from "../utils/services";
 import PopUp from "../components/PopUp";
 import Loading from "../components/Loading";
+import { Failed } from "../components/icon";
+import FailedPopUp from "../components/FailedPopUp";
 export interface IadminProps {
 }
 
@@ -23,7 +25,8 @@ const admin: FC<IadminProps> = () => {
   const [toggle, setToggle] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
-
+  const [failed, setFailed] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
   const [blogPost, setBlogPost] = useState<BlogPost>({ date: Date.now(), post: initialValue, title: "", excerpt: "" , image_url: imageUrl, slug: "" });
   useEffect(() => {
     setBlogPost(prev => ({ ...prev, date: Date.now(), post: editor.children, title: input, excerpt: excerptInput, slug: parser(input), image_url: imageUrl }));
@@ -34,11 +37,16 @@ const admin: FC<IadminProps> = () => {
     postBlogPost(blogPost)
     .then((res) => {
       setLoading(false);
-      setSubmitted(true);
+      console.log(res);
+      if (res.success === true) {
+        setSubmitted(true);
+      } else {
+        setFailed(true);
+        setMessage(res.message);
+      }
     })
     .catch ((err) => {
       setLoading(false);
-      console.log(err)
 });
   }
   return (
@@ -46,7 +54,8 @@ const admin: FC<IadminProps> = () => {
     onSubmit={handleSubmit}
       className="w-3/4 mx-auto flex flex-col gap-6">
       <PopUp toggle={submitted} close={() => setSubmitted(false)} />
-      <Loading toggle={loading} />
+      <FailedPopUp toggle={failed} message={message} close={() => setFailed(false)} />
+      <Loading toggle={loading}  />
       <div className="">
         <label className="text-white text-2xl font-bold">Title:</label>
         <input required name="heading" value={input} onChange={(e) => setInput(e.target.value)} type={"text"} className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700" />
