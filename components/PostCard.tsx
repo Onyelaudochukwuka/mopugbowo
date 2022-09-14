@@ -13,7 +13,7 @@ const PostCard: FC<BlogPost> = ({ date, excerpt, image_url, post, title, slug })
       <div className="bg-curves text-white shadow-lg rounded-lg p-0 lg:pb-24 pb-8 mb-8 w-3/4 m-auto">
           <div className="relative overflow-hidden shadow-md pb-80 mb-6">
               <div
-                  className="object-top absolute h-80 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg" >
+                  className="object-top relative h-80 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg" >
               <Image src={image_url} 
                       layout="responsive"
                       objectFit="cover"
