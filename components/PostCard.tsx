@@ -10,13 +10,13 @@ export interface IPostCardProps {
 const PostCard: FC<BlogPost> = ({ date, excerpt, image_url, post, title, slug }) => {
     return (
       <Link href={`/post/${slug}`}>
-      <div className="bg-curves text-white shadow-lg rounded-lg p-0 lg:pb-24 pb-8 mb-8 w-3/4 m-auto">
+            <div className="bg-[#711C91] text-white shadow-lg rounded-lg p-0 lg:pb-24 pb-8 mb-8 w-3/4 m-auto">
           <div className="relative overflow-hidden shadow-md pb-80 mb-6">
               <div
                   className="object-top relative h-80 w-full object-cover shadow-lg rounded-t-lg lg:rounded-lg" >
               <Image src={image_url} 
                       layout="responsive"
-                      objectFit="cover"
+                      objectFit="scale-down"
                       width={30}
                       height={30}
                     alt={title} />
@@ -30,7 +30,7 @@ const PostCard: FC<BlogPost> = ({ date, excerpt, image_url, post, title, slug })
           <div className="block lg:flex text-center items-center justify-center mb-8 w-full">
             
               <div className="font-medium">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline mr-2 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline mr-2 fill-curves" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                   <span>
