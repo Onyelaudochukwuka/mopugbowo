@@ -55,23 +55,23 @@
     },
     "TS":{
         "name": "<name>.ts",
-        "template": "./template/typescript.ts"
+        "template": "/Users/mac/Desktop/template/typescript.ts"
     },
     "TSX":{
         "name": "<name>.tsx",
-        "template": "./template/component.tsx"
+        "template": "/Users/mac/Desktop/template/component.tsx"
     },
     "TSXPAGE":{
         "name": "<name>.tsx",
-        "template": "./template/page.tsx"
+        "template": "/Users/mac/Desktop/template/page.tsx"
     },
     "TSXPAGESLUG":{
         "name": "[<name>].tsx",
-        "template": "./template/slugPage.tsx"
+        "template": "/Users/mac/Desktop/template/slugPage.tsx"
     },
     "ICON": {
       "name": "<name>.tsx",
-      "template": "./template/icon.tsx"
+      "template": "/Users/mac/Desktop/template/icon.tsx"
     },
     "CSS": {
       "name": "<name>.css"
