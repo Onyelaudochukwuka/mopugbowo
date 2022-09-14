@@ -11,7 +11,7 @@ export const postBlogPost = async (data: BlogPost) => {
     return res.json()
 }
 export const getPosts = async () => { 
-    const res = await fetch('/api/getPosts', {
+    const res = await fetch('http://localhost:3000/api/getPosts', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
