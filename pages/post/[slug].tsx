@@ -1,11 +1,13 @@
 import type { NextPage } from 'next'
-import React from "react";
-import data from "../../index"
+import React, { useState } from "react";
+import { BlogPost } from "../../models/blog";
+import { fetchPost } from "../../utils/services";
 export interface IslugProps {
   slug: string;
 }
 
 const slug: NextPage<IslugProps> = ({ slug }) => {
+  const [data, setData] = useState<{ success: boolean, data: BlogPost[] }>({ success: false , data: []}); ;
   const getContentFragment = (index: number, text: any, obj: any, type?:string) => {
     let modifiedText: any = text;
 
@@ -74,17 +76,34 @@ const slug: NextPage<IslugProps> = ({ slug }) => {
         return modifiedText
     }
   };
-  console.log(data.data[data.data.length - 1]);
+  useState(() => {
+    fetchPost(slug)
+      .then((res) => {
+        console.log(res);
+        setData(res);
+      }
+      )
+  }, [slug]);
+  console.log(data);
   return (
     <section>
       
-      {data.data[data.data.length - 1].post.map((typeObj, index) => {
+      {
+        data.success === true
+      ?
+        data.data.length > 0
+      ?
+        data.data.post.map((typeObj, index) => {
         const { type, children } = typeObj;
 
         const child = children.map((item, itemindex) => !!item.type ? getContentFragment(index, item.children.map((item, itemIndex) => getContentFragment(itemindex, item?.text, item)), typeObj, item.type) : getContentFragment(itemindex, !!item.text ? item.text : "", item));
 
           return getContentFragment(index, child, typeObj, type);
         })
+        :
+        <p>No Post in this category</p>
+        :
+        <p>No Post in this category</p>
       }
   
      
