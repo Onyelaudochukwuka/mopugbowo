@@ -8,8 +8,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         case 'GET':
 
             try {
-                const blog = await Blog.find({});
-                res.status(201).json({ success: true, data: blog })
+                const blog = await Blog.find({ $sort: { date: 1 } });
+                res.status(200).json({ success: true, data: blog })
             }
             catch (error: any) {
                 console.log(error);
