@@ -7,8 +7,9 @@ import { BlogPost } from "../models/blog";
 export interface IPostCardProps {
 }
 
-const PostCard: FC<BlogPost> = ({ date, excerpt, image_url, post, title }) => {
-  return (
+const PostCard: FC<BlogPost> = ({ date, excerpt, image_url, post, title, slug }) => {
+    return (
+      <Link href={`/post/${slug}`}>
       <div className="bg-curves text-white shadow-lg rounded-lg p-0 lg:pb-24 pb-8 mb-8 w-3/4 m-auto">
           <div className="relative overflow-hidden shadow-md pb-80 mb-6">
               <div
@@ -24,7 +25,7 @@ const PostCard: FC<BlogPost> = ({ date, excerpt, image_url, post, title }) => {
 
           <h1 className="transition duration-700 text-center mb-8 cursor-pointer
       hover:text-blue-600 text-3xl font-semibold capitalize">
-              <Link href={`/post/${title}`}>{title.toLowerCase()}</Link>
+              <Link href={`/post/${slug}`}>{title.toLowerCase()}</Link>
           </h1>
           <div className="block lg:flex text-center items-center justify-center mb-8 w-full">
             
@@ -39,13 +40,14 @@ const PostCard: FC<BlogPost> = ({ date, excerpt, image_url, post, title }) => {
           </div>
           <p className="text-center text-lg text-white font-normal px-4 lg:px-20 mb-8" >{excerpt}</p>
           <div className="text-center">
-              <Link href={`/post/${title}`}>
+                    <Link href={`/post/${slug}`}>
                   <span className="transition duration-500 transform hover:-translate-y-1 inline-block bg-primary hover:bg-dark text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">
                       Continue reading
                   </span>
               </Link>
           </div>
-      </div>
+            </div>
+        </Link>
   );
 }
 export default PostCard;
