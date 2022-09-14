@@ -7,7 +7,6 @@ export interface IPopUpProps {
 }
 
 const PopUp: FC<IPopUpProps> = ({ toggle, close }) => {
-  console.log(toggle);
   return (
     <section className={`${toggle ? `scale-100`: `scale-0`} transition-transform duration-500 ease-in flex bg-black/40 fixed inset-0 w-full h-full z-50 items-center justify-center`}>
       <div className="bg-white w-3/4 h-3/4 relative flex items-center justify-center flex-col">
