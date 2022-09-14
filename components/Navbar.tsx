@@ -9,7 +9,7 @@ type Content = {
   link: string;
   inHome: boolean;
 }
-const content: Content[] = [{ text: "Home", link: "#home", inHome: true }, { text: "About Us", link: "#aboutus", inHome: true }, { text: "Blog", link: "blog", inHome: false }, { text: "Contact Us", link: "#contactus", inHome: true }, { text: "Give", link: "donate", inHome: false}]
+const content: Content[] = [{ text: "Home", link: "#home", inHome: true }, { text: "About Us", link: "#aboutus", inHome: true }, { text: "Blog", link: "post", inHome: false }, { text: "Contact Us", link: "#contactus", inHome: true }, { text: "Give", link: "donate", inHome: false}]
 const Navbar: FC = () => {
   const [yDistance, setYDistance] = useState<number>(0);
   const [dropDown, setDropDown] = useState<boolean>(false);
