@@ -5,7 +5,7 @@ import type { IconProps, Props, PropTypes } from "../../typescript";
 
 const Failed: FC<PropTypes<Props, IconProps>> = (props) => {
     return (
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+        <svg {...props} width="120px" height="120px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
             viewBox="0 0 507.2 507.2" >
             <circle style={{fill:"#F15249"}} cx="253.6" cy="253.6" r="253.6" />
             <path style={{fill:"#AD0E0E"}} d="M147.2,368L284,504.8c115.2-13.6,206.4-104,220.8-219.2L367.2,148L147.2,368z" />
