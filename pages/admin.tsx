@@ -11,29 +11,33 @@ import Loading from "../components/Loading";
 export interface IadminProps {
 }
 
+export const parser = (arg: string): string => {
+  var string = arg?.replace(' ', '-');
+  return arg?.indexOf(' ') > -1 ? parser(string) : string?.toLowerCase();
+}
 const admin: FC<IadminProps> = () => {
   const editor = useMemo(() => withHistory(withReact(createEditor())), [])
   const [input, setInput] = useState<string>("");
   const [excerptInput, setExcerptInput] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
   const [toggle, setToggle] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
 
-  const [blogPost, setBlogPost] = useState<BlogPost>({ date: Date.now(), post: initialValue, title: "", excerpt: "" , image_url: imageUrl});
+  const [blogPost, setBlogPost] = useState<BlogPost>({ date: Date.now(), post: initialValue, title: "", excerpt: "" , image_url: imageUrl, slug: "" });
   useEffect(() => {
-    setBlogPost(prev => ({ ...prev, date: Date.now(), post: editor.children, title: input, excerpt: excerptInput }));
+    setBlogPost(prev => ({ ...prev, date: Date.now(), post: editor.children, title: input, excerpt: excerptInput, slug: parser(input), image_url: imageUrl }));
   }, [input, editor, toggle, excerptInput]);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setToggle(true);
+    setLoading(true);
     postBlogPost(blogPost)
     .then((res) => {
-      console.log(res);
-      setToggle(false);
+      setLoading(false);
       setSubmitted(true);
     })
     .catch ((err) => {
-      setToggle(false);
+      setLoading(false);
       console.log(err)
 });
   }
@@ -42,7 +46,7 @@ const admin: FC<IadminProps> = () => {
     onSubmit={handleSubmit}
       className="w-3/4 mx-auto flex flex-col gap-6">
       <PopUp toggle={submitted} close={() => setSubmitted(false)} />
-      <Loading toggle={toggle} />
+      <Loading toggle={loading} />
       <div className="">
         <label className="text-white text-2xl font-bold">Title:</label>
         <input required name="heading" value={input} onChange={(e) => setInput(e.target.value)} type={"text"} className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700" />
