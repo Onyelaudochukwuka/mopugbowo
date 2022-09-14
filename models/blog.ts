@@ -1,6 +1,7 @@
 import { Schema, model, models } from "mongoose";
 import type { Descendant } from 'slate';
 export interface BlogPost{
+        _id: string,
         date: number;
         title: string;
         excerpt: string;
@@ -10,16 +11,18 @@ export interface BlogPost{
 }
 
 interface ChildSchema {
+        _id: string;
         text: string;
-        bold: boolean;
-        align: string;
-        code: boolean;
-        italic: boolean;
-        underline: boolean;
-        type: string;
-        children: ChildOfChildSchema[];
+        bold?: boolean;
+        align?: string;
+        code?: boolean;
+        italic?: boolean;
+        underline?: boolean;
+        type?: string;
+        children?: ChildOfChildSchema[];
 }
 interface ChildOfChildSchema {
+        _id: string;
         text: string;
         bold: boolean;
         align: string;
@@ -77,6 +80,7 @@ const childSchema = new Schema<ChildSchema>({
         children: [childOfChildSchema]
 });
 interface PostSchema {
+        _id: string;
         type: string;
         children: ChildSchema[];
 }
