@@ -20,7 +20,7 @@ export const getPosts = async () => {
     return res.json()
 }
 export const fetchPost = async (slug:string) => { 
-    const res = await fetch(`/api/getPosts?slug=${slug}`, {
+    const res = await fetch(`/api/fetchPost?slug=${slug}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
