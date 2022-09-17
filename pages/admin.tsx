@@ -14,7 +14,7 @@ export interface IadminProps {
 }
 
 export const parser = (arg: string): string => {
-  var string = arg?.replace(' ', '-');
+  var string:string = arg?.replace(' ', '-');
   return arg?.indexOf(' ') > -1 ? parser(string) : string?.toLowerCase();
 }
 const admin: FC<IadminProps> = () => {
@@ -27,9 +27,9 @@ const admin: FC<IadminProps> = () => {
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [failed, setFailed] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
-  const [blogPost, setBlogPost] = useState<BlogPost>({ date: Date.now(), post: initialValue, title: "", excerpt: "" , image_url: imageUrl, slug: "" });
+  const [blogPost, setBlogPost] = useState<any>({ date: Date.now(), post: initialValue, title: "", excerpt: "" , image_url: imageUrl, slug: "" });
   useEffect(() => {
-    setBlogPost(prev => ({ ...prev, date: Date.now(), post: editor.children, title: input, excerpt: excerptInput, slug: parser(input), image_url: imageUrl }));
+    setBlogPost((prev:any) => ({ ...prev, date: Date.now(), post: editor.children, title: input, excerpt: excerptInput, slug: parser(input), image_url: imageUrl }));
   }, [input, editor, toggle, excerptInput]);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,7 +37,6 @@ const admin: FC<IadminProps> = () => {
     postBlogPost(blogPost)
     .then((res) => {
       setLoading(false);
-      console.log(res);
       if (res.success === true) {
         setSubmitted(true);
       } else {
