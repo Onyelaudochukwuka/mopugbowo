@@ -1,7 +1,7 @@
 import { Schema, model, models } from "mongoose";
 import type { Descendant } from 'slate';
 export interface BlogPost{
-        _id: string,
+        _id?: string,
         date: number;
         title: string;
         excerpt: string;
