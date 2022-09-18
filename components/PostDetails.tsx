@@ -77,7 +77,7 @@ const PostDetails: FC<PropTypes<IPostDetailsProps, BlogPost>> = ({ post, image_u
     }
   };
   return (
-    <div className="bg-light text-primaryLight shadow-lg rounded-lg lg:p-8 pb-12 mb-8 w-3/4 mx-auto">
+    <div className="bg-primaryLight text-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8 w-3/4 mx-auto">
       <div className="relative overflow-hidden shadow-md pb-80 mb-6">
         <div
           className="object-top relative h-80 w-full object-cover rounded-t-lg lg:rounded-lg" >
