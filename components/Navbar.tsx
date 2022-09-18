@@ -9,7 +9,7 @@ type Content = {
   link: string;
   inHome: boolean;
 }
-const content: Content[] = [{ text: "Home", link: "#home", inHome: true }, { text: "About Us", link: "#aboutus", inHome: true }, { text: "Blog", link: "post", inHome: false }, { text: "Contact Us", link: "#contactus", inHome: true }, { text: "Give", link: "donate", inHome: false}]
+const content: Content[] = [{ text: "Home", link: "#home", inHome: true }, { text: "About Us", link: "#about-us", inHome: true }, { text: "Blog", link: "post", inHome: false }, { text: "Contact Us", link: "#contact-us", inHome: true }, { text: "Give", link: "donate", inHome: false}]
 const Navbar: FC = () => {
   const [yDistance, setYDistance] = useState<number>(0);
   const [dropDown, setDropDown] = useState<boolean>(false);
@@ -23,7 +23,7 @@ const Navbar: FC = () => {
   const Id: string = useId();
   const { route } = useRouter();
   return (
-    <nav className={`${yDistance > 100 ? `bg-curves` : `bg-transparent` } transition-colors duration-500 ease-in w-full flex flex-1 p-4 justify-between items-center px-[8.33%] ${route !== `/` ? `relative` :`fixed`} z-40`}>
+    <nav className={`${yDistance > 30 ? `bg-curves` : `bg-transparent` } transition-colors duration-500 ease-in w-full flex flex-1 p-4 justify-between items-center px-[8.33%] ${route !== `/` ? `relative` :`fixed`} z-40`}>
       <span className="w-12 "><Image src={logo} /></span>
       <div className={`flex justify-between lg:flex-row lg:basis-6/12 lg:mr-[8.33%] text-text font-bold items-center ${dropDown ? `scale-100 bg-curves items-center py-12` : `scale-0`} lg:bg-transparent lg:py-0 lg:scale-100 origin-top-left  transition-transform duration-700 lg:transition-none lg:duration-0 ease-in z-50  h-[90vh] w-full lg:w-auto lg:h-auto inset-0 lg:relative absolute top-24 lg:top-auto flex-col`}>
         {
