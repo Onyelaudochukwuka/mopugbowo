@@ -51,8 +51,9 @@ const About: FC = () => {
     return setShow((state) => !state);
   };
   const { span: Span, div: Div } = motion;
+  // 1 timothy 3:15
   return (
-    <section className="mt-24">
+    <section className="mt-24" id="about-us">
       <Card changeState={useSetShow} data={data} className={`${show ? `scale-100` : `scale-0 select-none`} transition-[transform] duration-300 origin-center ease-in`} />
       <div className="flex justify-around lg:flex-row items-center flex-col">
         <Span 
