@@ -39,7 +39,7 @@ const Navbar: FC = () => {
         onClick={() => setDropDown(prev => !prev)}
         
       >
-        <span className="block w-16 h-1.5 relative bg-white rounded-full cursor-pointer before:w-16 before:h-1.5 before:bg-white before:rounded-full  before:absolute before:bottom-3 after:w-16 after:h-1.5 after:bg-white after:rounded-full  after:absolute after:top-3"></span>
+        <span className={`block w-10 h-1 relative bg-white rounded-full cursor-pointer before:w-8 before:h-1 before:bg-white before:rounded-full  before:absolute before:bottom-3 after:w-8 after:h-1 after:right-0 before:right-0 after:bg-white after:rounded-full  after:absolute after:top-3 transition-colors duration-300 ease-in-out after:transition-transform after:duration-500 after:ease-in before:transition-transform before:duration-500 before:ease-in ${dropDown && `before:rotate-45 bg-transparent after:-rotate-45 before:top-0 after:top-0`}`}></span>
       </div>
     </nav>
   )
