@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -11,11 +11,32 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper";
 
 const Gallery = () => {
+    const [isSmallMobile, setIsSmallMobile] = useState<boolean>(false);
+    const [isLargeMobile, setIsLargeMobile] = useState<boolean>(false);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (window.innerWidth > 920) {
+                setIsSmallMobile(false);
+                setIsLargeMobile(false);
+            }
+            else if (window.innerWidth > 720 && window.innerWidth < 920) {
+                setIsLargeMobile(true);
+                setIsSmallMobile(false);
+            }
+            else {
+                setIsSmallMobile(true)
+                setIsLargeMobile(false);
+            }
+        }, 1000)
+        return () => {
+            clearInterval(interval)
+        }
+    }, [])
     return (
         <section>
             <h1 className="text-center relative text-bold text-text font-bold tracking-widest text-2xl before:absolute before:w-24 before:h-1 before:rounded-full  before:bg-text before:mt-8 before:origin-left before:transition-[transform] before:duration-300 hover:before:scale-x-125  cursor-pointer mb-8">Gallery</h1>
             <Swiper
-                slidesPerView={3}
+                slidesPerView={isSmallMobile ? 1 : isLargeMobile ? 2 : 3}
                 spaceBetween={30}
                 pagination={{
                     clickable: true,
