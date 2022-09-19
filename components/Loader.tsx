@@ -6,7 +6,8 @@ export interface ILoaderProps {
 const Loader: FC<ILoaderProps> = (props) => {
   return (
     <section>
-      Loader
+      <div></div>
+      <div></div>
     </section>
   );
 }
