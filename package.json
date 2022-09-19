@@ -19,7 +19,8 @@
     "react-dom": "18.1.0",
     "slate": "^0.82.1",
     "slate-history": "^0.66.0",
-    "slate-react": "^0.82.2"
+    "slate-react": "^0.82.2",
+    "swiper": "^8.4.2"
   },
   "devDependencies": {
     "@types/node": "17.0.35",
