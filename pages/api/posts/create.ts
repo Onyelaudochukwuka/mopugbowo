@@ -3,11 +3,9 @@ import dbConnect from '../../../lib/dbConnect';
 import Blog from '../../../models/blog';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { method } = req;
-    const { post, title, date, excerpt, slug, image_url } = req.body;
     await dbConnect()
     switch (method) {
         case 'POST':
-
             try {
                 const exists = await Blog.find({ slug: { $eq: req.body.slug } });
                 if (exists.length === 0) {
