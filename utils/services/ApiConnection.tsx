@@ -28,17 +28,17 @@ const connectedAwardsApi = createApi({
 
   endpoints: (builder) => ({
     getPosts: builder.query({
-      query: () => createRequest(`/getPosts`, "GET"),
+      query: () => createRequest(`/posts/posts`, "GET"),
       transformResponse: (response: { data: BlogPost }) => response.data,
       providesTags: ["Get"],
     }),
       getPost: builder.query({
-          query: (slug: string) => createRequest(`/fetchPost?slug=${slug}`, "GET"),
+          query: (slug: string) => createRequest(`/posts/post/?slug=${slug}`, "GET"),
           transformResponse: (response: { data: BlogPost }) => response.data,
           providesTags: ["Get"],
       }),
       createPost: builder.mutation({
-          query: (body: any) => postRequest(`/createPost`, "POST", body),
+          query: (body: any) => postRequest(`/posts/create`, "POST", body),
             invalidatesTags: ["Post"],
       }),
   }),
