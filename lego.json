@@ -29,7 +29,7 @@
     },
     {
       "type": "reducer",
-      "path": "src/redux/reducers",
+      "path": "utils/services",
       "isFile": true,
       "file": "REDUCER"
     },
