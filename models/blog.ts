@@ -101,4 +101,4 @@ const blogSchema = new Schema<BlogPost>({
         
 });
 
-module.exports = models.blog || model('blog', blogSchema);
+export default models.Blog || model("Blog", blogSchema);

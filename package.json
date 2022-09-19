@@ -17,6 +17,7 @@
     "next": "^12.3.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-type-animation": "^2.1.1",
     "slate": "^0.82.1",
     "slate-history": "^0.66.0",
     "slate-react": "^0.82.2",
