@@ -6,7 +6,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     await dbConnect()
     switch (method) {
         case 'GET':
-
             try {
                 const blog = await Blog.find({ $sort: { date: 1 } });
                 res.status(200).json({ success: true, data: blog })
