@@ -5,7 +5,7 @@ import Loading from "../components/Loading";
 import { BlogPost } from "../models/blog";
 import { getPosts } from "../utils/services";
 import { TypeAnimation } from "react-type-animation";
-import Router from "next/router";
+
 
 export interface IblogProps {
   posts: any;
@@ -17,7 +17,6 @@ const blog: NextPage<IblogProps> = ({ posts }) => {
       setLoading(false);
     }, 3000);
   }, []);
-console.log(Router)
   return (
     <section className="flex flex-col items-center justify-center">
       <Loading toggle={loading} />
