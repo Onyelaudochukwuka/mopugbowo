@@ -32,7 +32,16 @@ const connectedAwardsApi = createApi({
       transformResponse: (response: { data: BlogPost }) => response.data,
       providesTags: ["Get"],
     }),
+      getPost: builder.query({
+          query: (slug: string) => createRequest(`/fetchPost?slug=${slug}`, "GET"),
+          transformResponse: (response: { data: BlogPost }) => response.data,
+          providesTags: ["Get"],
+      }),
+      createPost: builder.mutation({
+          query: (body: any) => postRequest(`/createPost`, "POST", body),
+            invalidatesTags: ["Post"],
+      }),
   }),
 });
-export const { useGetPostsQuery } = connectedAwardsApi;
+export const { useGetPostsQuery, useGetPostQuery, useCreatePostMutation } = connectedAwardsApi;
 export default connectedAwardsApi;
