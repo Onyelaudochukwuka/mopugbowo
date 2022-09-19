@@ -20,15 +20,11 @@ const blog: NextPage<IblogProps> = ({ posts }) => {
     <section>
       <Loading  toggle={loading} />
       {
-        !!posts
-      ?
-        posts?.length > 0
+        !!posts && posts?.length > 0
           ?
           <div className="flex flex-col">
             {posts.map((post: BlogPost) => (<PostCard {...post} />))}
           </div>
-          : 
-          
           :
           <p>No Post Found</p>
       }
