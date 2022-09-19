@@ -6,8 +6,9 @@ export interface ILoaderProps {
 const Loader: FC<ILoaderProps> = (props) => {
   return (
     <section>
-      <div></div>
-      <div></div>
+      <div className="w-8 h-8 bg-light "></div>
+      <div className="w-8 h-8 bg-light "></div>
+      <div className="w-8 h-8 bg-light "></div>
     </section>
   );
 }
