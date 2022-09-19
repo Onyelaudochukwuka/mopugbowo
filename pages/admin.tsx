@@ -10,6 +10,7 @@ import PopUp from "../components/PopUp";
 import Loading from "../components/Loading";
 import { Failed } from "../components/icon";
 import FailedPopUp from "../components/FailedPopUp";
+import { useCreatePostMutation } from "../utils/services/ApiConnection";
 export interface IadminProps {
 }
 
@@ -27,26 +28,29 @@ const admin: FC<IadminProps> = () => {
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [failed, setFailed] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
-  const [blogPost, setBlogPost] = useState<any>({ date: Date.now(), post: initialValue, title: "", excerpt: "" , image_url: imageUrl, slug: "" });
+  const [blogPost, setBlogPost] = useState<any>({ date: Date.now(), post: initialValue, title: "", excerpt: "", image_url: imageUrl, slug: "" });
+  const [createPost, { isLoading, isSuccess }] = useCreatePostMutation();
   useEffect(() => {
     setBlogPost((prev:any) => ({ ...prev, date: Date.now(), post: editor.children, title: input, excerpt: excerptInput, slug: parser(input), image_url: imageUrl }));
   }, [input, editor, toggle, excerptInput]);
+  useEffect(() => {
+    if(isLoading) {
+      setLoading(true);
+
+    } else {
+      setLoading(false);
+    }
+  }, [isLoading]);
+  useEffect(() => {
+    if(isSuccess) {
+      setSubmitted(true);
+    } else {
+      setSubmitted(false);
+    }
+  },[isSuccess]);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
-    postBlogPost(blogPost)
-    .then((res) => {
-      setLoading(false);
-      if (res.success === true) {
-        setSubmitted(true);
-      } else {
-        setFailed(true);
-        setMessage(res.message);
-      }
-    })
-    .catch ((err) => {
-      setLoading(false);
-});
+    createPost(blogPost); 
   }
   return (
     <form
