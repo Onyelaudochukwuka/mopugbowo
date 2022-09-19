@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../lib/dbConnect';
-const Blog = require('../../models/blog');
+import Blog from '../../models/blog';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { method } = req;
     const { post, title, date, excerpt, slug, image_url } = req.body;
