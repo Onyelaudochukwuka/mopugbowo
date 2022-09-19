@@ -13,11 +13,11 @@ const blog: NextPage<IblogProps> = ({ posts }) => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 3000);
   }, []);
 
   return (
-    <section>
+    <section className="flex flex-col items-center justify-center">
       <Loading toggle={loading} />
       {!!posts && posts?.length > 0 ? (
         <div className="flex flex-col">
@@ -26,7 +26,7 @@ const blog: NextPage<IblogProps> = ({ posts }) => {
           ))}
         </div>
       ) : (
-        <p>No Post Found</p>
+        <p className="w-fit mx-auto">No Post Found</p>
       )}
     </section>
   );
