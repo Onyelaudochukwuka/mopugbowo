@@ -9,6 +9,8 @@ import "swiper/css/pagination";
 
 // import required modules
 import { Pagination } from "swiper";
+import Image from "next/image";
+import { Gallery1, Gallery2, Gallery3, Gallery4, Gallery5 } from "../public";
 
 const Gallery = () => {
     const [isSmallMobile, setIsSmallMobile] = useState<boolean>(false);
@@ -42,17 +44,13 @@ const Gallery = () => {
                     clickable: true,
                 }}
                 modules={[Pagination]}
-                className="mySwiper h-screen"
+                className="mySwiper"
             >
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
-                <SwiperSlide>Slide 7</SwiperSlide>
-                <SwiperSlide>Slide 8</SwiperSlide>
-                <SwiperSlide>Slide 9</SwiperSlide>
+                <SwiperSlide><Image src={ Gallery1 } layout="fill" className="z-20"  objectFit="scale-down" /> </SwiperSlide>
+                <SwiperSlide><Image src={ Gallery2 } layout="fill" className="z-20"  objectFit="scale-down" /> </SwiperSlide>
+                <SwiperSlide><Image src={ Gallery3 } layout="fill" className="z-20"  objectFit="scale-down" /> </SwiperSlide>
+                <SwiperSlide><Image src={ Gallery4 } layout="fill" className="z-20"  objectFit="scale-down" /> </SwiperSlide>
+                <SwiperSlide><Image src={ Gallery5 } layout="fill" className="z-20"  objectFit="scale-down" /> </SwiperSlide>
             </Swiper>
         </section>
     );
