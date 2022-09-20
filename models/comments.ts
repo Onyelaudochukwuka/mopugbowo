@@ -5,7 +5,7 @@ interface CommentSchema {
     email: string;
     date: number;
 }
-const commentSchema = new Schema({
+const commentSchema = new Schema<CommentSchema>({
     name: String,
     comment: String,
     email: String,
