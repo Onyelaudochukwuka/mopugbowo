@@ -14,7 +14,7 @@ const postRequest = (url: string, method: string, body: object) => ({
   url,
   headers: ApiHeaders,
   method,
-  body: JSON.stringify(body),
+  body: body
 });
 const postRequestWithHeader = (url: string, method: string, headers: any) => ({
   url,
@@ -23,13 +23,13 @@ const postRequestWithHeader = (url: string, method: string, headers: any) => ({
 });
 const connectedAwardsApi = createApi({
   reducerPath: "Api",
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  baseQuery: fetchBaseQuery({ baseUrl: "/api" }),
   tagTypes: ["Post", "Get"],
 
   endpoints: (builder) => ({
     getPosts: builder.query({
       query: () => createRequest(`/posts/posts`, "GET"),
-      transformResponse: (response: { data: BlogPost }) => response.data,
+      transformResponse: (response: { data: BlogPost[] }) => response.data,
       providesTags: ["Get"],
     }),
       getPost: builder.query({
