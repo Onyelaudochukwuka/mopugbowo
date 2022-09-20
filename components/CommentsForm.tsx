@@ -1,20 +1,35 @@
+import { motion } from "framer-motion";
 import  React, { ChangeEvent, ChangeEventHandler, FC, useState } from 'react';
+import { useCreateCommentMutation } from "../utils/services/ApiConnection";
 
 export interface ICommentsFormProps {
 }
 
 const CommentsForm: FC<ICommentsFormProps> = (props) => {
-  let [error, setError] = useState(false);
-  let [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [error, setError] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [checked, setChecked] = useState(false);
+  const [createComment, { isLoading, isSuccess }] = useCreateCommentMutation();
+  const { p: P } = motion;
   const handleCommentSubmission = () => {
-    
+    if (!!name && !!email && !!message) {
+      const obj = { name, email, message };
+      createComment({ ...obj, date: Date.now() })
+      if (checked) {
+      
+      }
+    } else {
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }
+      , 5000);
+    }
   }
-  console.log(checked);
   return (
     
       <div className="bg-primaryLight text-white shadow-lg rounded-lg p-8 pb-12 mb-8 w-3/4 mx-auto">
@@ -22,7 +37,9 @@ const CommentsForm: FC<ICommentsFormProps> = (props) => {
         <div className="grid grid-cols-1 gap-4 mb-4">
           <textarea
             className="p-4 outline-none placeholder-gray-600 w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
-            placeholder="Comment"
+          placeholder="Comment"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
             name="comment"
           />
 
@@ -32,13 +49,17 @@ const CommentsForm: FC<ICommentsFormProps> = (props) => {
             type="text"
             name="name"
             className="py-2 px-4 outline-none placeholder-gray-600 w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
-            placeholder="Name"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           />
           <input
             type="text"
             name="email"
             className="py-2 px-4 outline-none placeholder-gray-600 w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
-            placeholder="Email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="grid grid-cols-1 gap-4 mb-4">
@@ -47,7 +68,10 @@ const CommentsForm: FC<ICommentsFormProps> = (props) => {
             <label className=" cursor-pointer ml-2" htmlFor="storeData">Save my-email and name for the next time I comment.</label>
           </div>
         </div>
-        {error && <p className="text-xs text-red-500">All fields are required.</p>}
+       <P className="text-sm text-light"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: error ? 1 : 0 }}
+      >All fields are required.</P>
         <div className="mt-8">
           <button
             type="button"
