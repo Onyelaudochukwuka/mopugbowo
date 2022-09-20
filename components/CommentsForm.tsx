@@ -1,4 +1,4 @@
-import  React, { FC, useState } from 'react';
+import  React, { ChangeEvent, ChangeEventHandler, FC, useState } from 'react';
 
 export interface ICommentsFormProps {
 }
@@ -7,9 +7,14 @@ const CommentsForm: FC<ICommentsFormProps> = (props) => {
   let [error, setError] = useState(false);
   let [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [checked, setChecked] = useState(false);
   const handleCommentSubmission = () => {
     
   }
+  console.log(checked);
   return (
     
       <div className="bg-primaryLight text-white shadow-lg rounded-lg p-8 pb-12 mb-8 w-3/4 mx-auto">
@@ -38,7 +43,7 @@ const CommentsForm: FC<ICommentsFormProps> = (props) => {
         </div>
         <div className="grid grid-cols-1 gap-4 mb-4">
           <div>
-            <input type="checkbox" id="storeData" value="true" />
+            <input type="checkbox" onChange={(event: ChangeEvent<HTMLInputElement>)=> setChecked(event.target.checked)} id="storeData" />
             <label className=" cursor-pointer ml-2" htmlFor="storeData">Save my-email and name for the next time I comment.</label>
           </div>
         </div>
