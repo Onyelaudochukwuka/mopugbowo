@@ -1,26 +1,39 @@
 import { motion } from "framer-motion";
-import  React, { ChangeEvent, ChangeEventHandler, FC, useState } from 'react';
+import  React, { ChangeEvent, ChangeEventHandler, FC, useEffect, useState } from 'react';
 import { useCreateCommentMutation } from "../utils/services/ApiConnection";
+import PopUp from "./PopUp";
 
 export interface ICommentsFormProps {
 }
 
 const CommentsForm: FC<ICommentsFormProps> = (props) => {
-  const [error, setError] = useState(false);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<boolean>(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [checked, setChecked] = useState(false);
   const [createComment, { isLoading, isSuccess }] = useCreateCommentMutation();
   const { p: P } = motion;
+  const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  useEffect(() => {
+    if (isLoading) {
+      setLoading(true);
+      setShowSuccessMessage(false);
+    } else {
+      setShowSuccessMessage(true);
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 5000);
+      setLoading(false);
+    }
+  }, [isLoading]);
   const handleCommentSubmission = () => {
-    if (!!name && !!email && !!message) {
+    if (!!name && !!email && !!message && regex.test(email)) {
       const obj = { name, email, message };
       createComment({ ...obj, date: Date.now() })
       if (checked) {
-      
       }
     } else {
       setError(true);
@@ -32,7 +45,8 @@ const CommentsForm: FC<ICommentsFormProps> = (props) => {
   }
   return (
     
-      <div className="bg-primaryLight text-white shadow-lg rounded-lg p-8 pb-12 mb-8 w-3/4 mx-auto">
+    <div className="bg-primaryLight text-white shadow-lg rounded-lg p-8 pb-12 mb-8 w-3/4 mx-auto">
+      <PopUp toggle={showSuccessMessage} close={() => setShowSuccessMessage(false)} message="Comment Created" />
         <h3 className="text-xl mb-8 font-semibold border-b pb-4">Leave A Reply</h3>
         <div className="grid grid-cols-1 gap-4 mb-4">
           <textarea
@@ -83,7 +97,7 @@ const CommentsForm: FC<ICommentsFormProps> = (props) => {
               !loading ?
                 "Post Comment"
                 : <div className="text-sm flex display-row"><svg
-                  className="animate-spin w-6 h-6 fill-white" viewBox="0 0 26.349 26.35" >
+                  className="animate-spin w-6 h-6 fill-black" viewBox="0 0 26.349 26.35" >
                   <g>
                     <g>
                       <circle cx="13.792" cy="3.082" r="3.082" />
@@ -100,7 +114,6 @@ const CommentsForm: FC<ICommentsFormProps> = (props) => {
                 </svg>
                   <span className="my-auto align-middle font-bold">Processing...</span></div>}
           </button>
-          {showSuccessMessage && <span className="text-xl float-right font-semibold mt-3 text-green-500">Comment submitted for review</span>}
         </div>
       </div>
   );
