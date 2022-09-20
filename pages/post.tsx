@@ -5,23 +5,24 @@ import Loading from "../components/Loading";
 import { BlogPost } from "../models/blog";
 import { getPosts } from "../utils/services";
 import { TypeAnimation } from "react-type-animation";
+import { useGetPostsQuery } from "../utils/services/ApiConnection";
 
 
 export interface IblogProps {
   posts: any;
+  loading: boolean;
 }
-const blog: NextPage<IblogProps> = ({ posts }) => {
-  const [loading, setLoading] = useState<boolean>(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, []);
+const blog: NextPage<IblogProps> = () => {
+  // const [loading, setLoading] = useState<boolean>(true);
+  const { data: posts, isLoading: loading } = useGetPostsQuery({
+    pollingInterval: 3000
+  });
+  console.log(posts, loading);
   return (
-    <section className="flex flex-col items-center justify-center">
+    <section className="flex flex-col items-center justify-center w-full">
       <Loading toggle={loading} />
       {!!posts && posts?.length > 0 ? (
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full">
           {posts.map((post: BlogPost) => (
             <PostCard {...post} />
           ))}
@@ -31,10 +32,5 @@ const blog: NextPage<IblogProps> = ({ posts }) => {
       )}
     </section>
   );
-};
-blog.getInitialProps = async ({ query }: any) => {
-  const { slug } = query;
-  const data = await getPosts();
-  return { slug, posts: data.data };
 };
 export default blog;
