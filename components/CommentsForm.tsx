@@ -39,7 +39,7 @@ const CommentsForm: FC<ICommentsFormProps> = (props) => {
         <div className="grid grid-cols-1 gap-4 mb-4">
           <div>
             <input type="checkbox" id="storeData" value="true" />
-            <label className="text-gray-500 cursor-pointer ml-2" htmlFor="storeData">Save my-email and name for the next time I comment.</label>
+            <label className=" cursor-pointer ml-2" htmlFor="storeData">Save my-email and name for the next time I comment.</label>
           </div>
         </div>
         {error && <p className="text-xs text-red-500">All fields are required.</p>}
