@@ -24,7 +24,7 @@ const PostCard: FC<BlogPost> = ({ date, excerpt, image_url, post, title, slug })
           </div>
 
           <h1 className="transition duration-700 text-center mb-8 cursor-pointer
-      hover:text-blue-600 text-3xl font-semibold capitalize">
+      hover:text-pink-300 text-3xl font-semibold capitalize">
               <Link href={`/post/${slug}`}>{title.toLowerCase()}</Link>
           </h1>
           <div className="block lg:flex text-center items-center justify-center mb-8 w-full">
@@ -41,7 +41,7 @@ const PostCard: FC<BlogPost> = ({ date, excerpt, image_url, post, title, slug })
           <p className="text-center text-lg text-white font-normal px-4 lg:px-20 mb-8" >{excerpt}</p>
           <div className="text-center">
                     <Link href={`/post/${slug}`}>
-                        <span className="transition duration-500 transform hover:-translate-y-1 inline-block bg-light hover:bg-[#FFEAFF] text-lg rounded-full text-primaryLight font-bold px-8 py-3 cursor-pointer">
+                        <span className="transition duration-500 transform hover:-translate-y-1 inline-block bg-light hover:bg-[#FFEAFF] text-lg rounded-full text-black font-bold px-8 py-3 cursor-pointer">
                       Continue reading
                   </span>
               </Link>
