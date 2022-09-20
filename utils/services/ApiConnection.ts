@@ -47,5 +47,5 @@ const connectedAwardsApi = createApi({
     }),
   }),
 });
-export const { useGetPostsQuery, useGetPostQuery, useCreatePostMutation } = connectedAwardsApi;
+export const { useGetPostsQuery, useGetPostQuery, useCreatePostMutation, useCreateCommentMutation, useGetCommentsQuery } = connectedAwardsApi;
 export default connectedAwardsApi;
