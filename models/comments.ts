@@ -4,6 +4,7 @@ interface CommentSchema {
     name: string;
     email: string;
     date: number;
+    slug: string;
 }
 const commentSchema = new Schema<CommentSchema>({
     name: String,
@@ -12,7 +13,8 @@ const commentSchema = new Schema<CommentSchema>({
     date: {
         type: Number,
         default: Date.now()
-    }
+    },
+    slug: String
 });
 
 export default models.Comment || model("Comment", commentSchema);
