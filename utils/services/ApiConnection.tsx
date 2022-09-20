@@ -41,6 +41,10 @@ const connectedAwardsApi = createApi({
           query: (body: any) => postRequest(`/posts/create`, "POST", body),
             invalidatesTags: ["Post"],
       }),
+    createComment: builder.mutation({
+          query: (body: any) => postRequest(`/posts/create`, "POST", body),
+            invalidatesTags: ["Post"],
+      }),
   }),
 });
 export const { useGetPostsQuery, useGetPostQuery, useCreatePostMutation } = connectedAwardsApi;
