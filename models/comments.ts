@@ -1,5 +1,5 @@
 import { Schema, model, models } from "mongoose";
-interface CommentSchema {
+export interface CommentSchema {
     comment: string;
     name: string;
     email: string;
