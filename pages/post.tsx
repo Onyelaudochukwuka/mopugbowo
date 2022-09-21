@@ -14,7 +14,7 @@ export interface IblogProps {
 }
 const blog: NextPage<IblogProps> = () => {
   // const [loading, setLoading] = useState<boolean>(true);
-  const { data: posts, isLoading: loading } = useGetPostsQuery({
+  const { data: posts, isLoading: loading, refetch } = useGetPostsQuery({
     pollingInterval: 3000
   });
   console.log(posts, loading);
