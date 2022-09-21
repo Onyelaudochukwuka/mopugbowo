@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import  React, { ChangeEvent, ChangeEventHandler, FC, useEffect, useState } from 'react';
+import comments from "../models/comments";
 import { useCreateCommentMutation } from "../utils/services/ApiConnection";
 import PopUp from "./PopUp";
 
@@ -23,7 +24,7 @@ const CommentsForm: FC<ICommentsFormProps> = ({ slug }) => {
   }, []);
   const handleCommentSubmission = () => {
     if (!!name && !!email && !!message && regex.test(email)) {
-      const obj = { name, email, message, slug };
+      const obj = { name, email, comment: message, slug };
       setLoading(true);
       setShowSuccessMessage(false);
       createComment({ ...obj, date: Date.now() }).then(() => { 
@@ -45,7 +46,7 @@ const CommentsForm: FC<ICommentsFormProps> = ({ slug }) => {
   }
   return (
     
-    <div className="bg-primaryLight text-white shadow-lg rounded-lg p-8 pb-12 mb-8 w-3/4 mx-auto">
+    <div className="bg-primaryLight text-white shadow-lg rounded-lg p-8 pb-12 mb-8 lg:w-3/4 w-10/12  mx-auto">
       <PopUp toggle={showSuccessMessage} close={() => setShowSuccessMessage(false)} message="Comment Created" />
         <h3 className="text-xl mb-8 font-semibold border-b pb-4">Leave A Reply</h3>
         <div className="grid grid-cols-1 gap-4 mb-4">
