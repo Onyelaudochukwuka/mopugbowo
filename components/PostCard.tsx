@@ -10,7 +10,7 @@ export interface IPostCardProps {
 const PostCard: FC<BlogPost> = ({ date, excerpt, image_url, post, title, slug }) => {
     return (
       <Link href={`/post/${slug}`}>
-            <div className="bg-primaryLight text-white shadow-lg rounded-lg p-0 lg:pb-24 pb-8 mb-8 w-3/4 m-auto">
+            <div className="bg-primaryLight text-white shadow-lg rounded-lg p-0 lg:pb-24 pb-8 mb-8 lg:w-3/4 w-10/12 m-auto">
           <div className="relative overflow-hidden shadow-md pb-80 mb-6">
               <div
                   className="object-top relative h-80 w-full object-cover rounded-t-lg lg:rounded-lg" >
