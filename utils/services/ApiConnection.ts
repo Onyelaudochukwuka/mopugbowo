@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import Router from "next/router";
 import { BlogPost } from "../../models/blog";
+import { CommentSchema } from "../../models/comments";
 const ApiHeaders = {
   Accept: "application/json",
 };
@@ -42,7 +43,7 @@ const connectedAwardsApi = createApi({
     }),
     getComments: builder.query({
       query: (slug:string) => createRequest(`/posts/comments/comments/?slug=${slug}`, "GET"),
-      transformResponse: (response: { data: BlogPost[] }) => response.data,
+      transformResponse: (response: { data: CommentSchema[] }) => response.data,
       providesTags: ["Get"],
     }),
   }),
