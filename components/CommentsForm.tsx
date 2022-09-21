@@ -4,11 +4,12 @@ import { useCreateCommentMutation } from "../utils/services/ApiConnection";
 import PopUp from "./PopUp";
 
 export interface ICommentsFormProps {
+  slug: string;
 }
 
-const CommentsForm: FC<ICommentsFormProps> = (props) => {
+const CommentsForm: FC<ICommentsFormProps> = ({ slug }) => {
   const [error, setError] = useState<boolean>(false);
-  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(true);
+  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,21 +19,20 @@ const CommentsForm: FC<ICommentsFormProps> = (props) => {
   const { p: P } = motion;
   const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   useEffect(() => {
-    if (isLoading) {
-      setLoading(true);
-      setShowSuccessMessage(false);
-    } else {
-      setShowSuccessMessage(true);
-      setTimeout(() => {
-        setShowSuccessMessage(false);
-      }, 5000);
-      setLoading(false);
-    }
-  }, [isLoading]);
+    setShowSuccessMessage(false);
+  }, []);
   const handleCommentSubmission = () => {
     if (!!name && !!email && !!message && regex.test(email)) {
-      const obj = { name, email, message };
-      createComment({ ...obj, date: Date.now() })
+      const obj = { name, email, message, slug };
+      setLoading(true);
+      setShowSuccessMessage(false);
+      createComment({ ...obj, date: Date.now() }).then(() => { 
+        setShowSuccessMessage(true);
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 5000);
+        setLoading(false);
+      })
       if (checked) {
       }
     } else {
