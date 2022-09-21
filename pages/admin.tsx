@@ -70,6 +70,10 @@ const admin: FC<IadminProps> = () => {
 
         </textarea>
       </div>
+      <div className="">
+        <label className="text-white text-2xl font-bold">ImageUrl:</label>
+        <input required name="heading" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} type={"text"} className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700" />
+      </div>
       <div>
 
       <p className="text-white text-2xl font-bold">Details:</p>
