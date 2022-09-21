@@ -1,14 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../../../lib/dbConnect';
-import Blog from '../../../../models/blog';
+import Comment from '../../../../models/comments';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const { method } = req;
     await dbConnect()
     switch (method) {
         case 'GET':
             try {
-                const blog = await Blog.find({ slug: { $eq: req.query.slug } });
-                    res.status(200).json({ success: true, data: blog })
+                const comment = await Comment.find({ slug: { $eq: req.query.slug } });
+                    res.status(200).json({ success: true, data: comment })
             }
             catch (error: any) {
                 console.log(error);
