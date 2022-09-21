@@ -56,7 +56,7 @@ const admin: FC<IadminProps> = () => {
     <form
     onSubmit={handleSubmit}
       className="w-3/4 mx-auto flex flex-col gap-6">
-      <PopUp toggle={submitted} close={() => setSubmitted(false)} message="Post Created" />
+      <PopUp toggle={submitted} close={() => setSubmitted(false)} message="Post Created"  />
       <FailedPopUp toggle={failed} message={message} close={() => setFailed(false)} />
       <Loading toggle={loading}  />
       <div className="">
