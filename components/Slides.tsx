@@ -10,7 +10,7 @@ const Slides: FC = () => {
     <div className="flex w-full items-center justify-center mt-24 z-10 relative">
       <span className="w-10 h-10 lg:w-16 lg:h-16 block lg:translate-x-56 cursor-pointer lg:relative absolute -left-6 z-50"
         onClick={()=>{
-          setImages((prev)=>{
+          setImages((prev) => {
             const newArr = [...prev];
             const [a, b] = newArr;
             newArr.splice(0, 2, b, a);
