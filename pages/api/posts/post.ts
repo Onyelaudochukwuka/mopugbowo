@@ -1,7 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../../lib/dbConnect';
-import Blog from '../../../models/blog';
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+import Blog, { BlogPost } from '../../../models/blog';
+interface Data {
+    success: boolean,
+    data?: BlogPost,
+    message?: string
+}
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     const { method } = req;
     const { slug } = req.query;
     await dbConnect()
