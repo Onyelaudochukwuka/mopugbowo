@@ -6,7 +6,7 @@ interface Data{
     data?: BlogPost[],
     message?: string
 }
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     const { method } = req;
     await dbConnect()
     switch (method) {
