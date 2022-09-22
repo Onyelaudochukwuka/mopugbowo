@@ -1,7 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../../../lib/dbConnect';
-import Comment from '../../../../models/comments';
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+import Comment, { CommentSchema } from '../../../../models/comments';
+interface Data {
+    success: boolean,
+    data?: CommentSchema,
+    message?: string
+}
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     const { method } = req;
     await dbConnect();
     switch (method) {
