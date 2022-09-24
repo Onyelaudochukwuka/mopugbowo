@@ -28,6 +28,7 @@ const admin: FC<IadminProps> = () => {
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [failed, setFailed] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [blogPost, setBlogPost] = useState<any>({ date: Date.now(), post: initialValue, title: "", excerpt: "", image_url: imageUrl, slug: "" });
   const [createPost, { isLoading, isSuccess }] = useCreatePostMutation();
   useEffect(() => {
@@ -50,6 +51,7 @@ const admin: FC<IadminProps> = () => {
   },[isSuccess]);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (password !== "passwordmopc") return;
     createPost(blogPost); 
   }
   return (
@@ -73,6 +75,10 @@ const admin: FC<IadminProps> = () => {
       <div className="">
         <label className="text-white text-2xl font-bold">ImageUrl:</label>
         <input required name="heading" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} type={"text"} className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700" />
+      </div>
+      <div className="">
+        <label className="text-white text-2xl font-bold">Password:</label>
+        <input required name="heading" value={password} onChange={(e) => setPassword(e.target.value)} type={"text"} className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700" />
       </div>
       <div>
 
