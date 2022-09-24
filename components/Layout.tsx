@@ -12,15 +12,13 @@ const Layout = ({children}:PropsWithChildren<any>) => {
             <meta name="description" content="Ministry Of Perfection - Ugbowo; Stay up-to-date with Our programmes and Event"/>
               <meta name="keywords" content="Ministry Of Perfection,ministry,perfection,church,ugbowo,Paul Abass"/>
                 <meta httpEquiv='X-UA-Compatible' content='IE=edge'/>
-                  <meta property="og:image" content="./logo - Copy.png"/>
+                  <meta property="og:image" content="./logo.png"/>
                     <meta property="og:description" content="Ministry Of Perfection - Ugbowo; Stay up-to-date with Our programmes and Event"/>
                       <meta property="og:title" content="Ministry Of Perfection Church - Ugbowo"/>
                         <title>Ministry Of Perfection Church - Ugbowo</title>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <style>
-          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
-        </style>
-    
+        <link rel="icon" href="./logo.png" type="image/png" sizes="16x16" />
+        <link rel="shortcut icon" href="./logo.png" type="image/png" sizes="16x16" />
       </Head>
       <section className="flex flex-col gap-8 min-h-screen">
       <Navbar />
