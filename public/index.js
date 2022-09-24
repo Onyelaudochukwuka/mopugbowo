@@ -22,7 +22,7 @@ import Arrow from './Arrow';
 import Gallery1 from "./GallerySlide1.jpg";
 import Gallery2 from "./GallerySlide2.jpg";
 import Gallery3 from "./GallerySlide3.jpg";
-import Gallery4 from "./GallerySlide4.jpg";
+import Gallery4 from "./GallerySlide4.jpeg";
 import Gallery5 from "./GallerySlide5.jpg";
 
 export { logo, wave1, slide1, slide2, slide3, rightArrow, leftArrow, about1, about2, about3, pastor, location, phone, mail, footerimg, email, instagram, twitter, facebook, Cancel, Arrow, Gallery1, Gallery2, Gallery3, Gallery4, Gallery5 };
