@@ -31,7 +31,7 @@ const Navbar: FC = () => {
             ?
             (<a href={`/${link}`} onClick={()=>setDropDown(false)}> <span key={Id + index} className="relative before:absolute before:-bottom-2 before:w-full before:left-0 before:h-1 before:bg-white before:scale-x-0 before:origin-right before:transition-transform before:duration-300 hover:before:scale-100 hover:before:origin-left before:rounded-full cursor-pointer">{text}</span></a>)
             :
-            (<Link onClick={()=>setDropDown(false)} key={Id + index} href={`/${link}`} className="relative before:absolute before:-bottom-2 before:w-full before:left-0 before:h-1 before:bg-white before:scale-x-0 before:origin-right before:transition-transform before:duration-300 hover:before:scale-100 hover:before:origin-left before:rounded-full cursor-pointer">{text}</Link>)
+            (<Link key={Id + index} href={`/${link}`}><span onClick={() => setDropDown(false)} className="relative before:absolute before:-bottom-2 before:w-full before:left-0 before:h-1 before:bg-white before:scale-x-0 before:origin-right before:transition-transform before:duration-300 hover:before:scale-100 hover:before:origin-left before:rounded-full cursor-pointer">{text}</span></Link>)
           )
         }
       </div>
