@@ -11,6 +11,7 @@ import Loading from "../components/Loading";
 import { Failed } from "../components/icon";
 import FailedPopUp from "../components/FailedPopUp";
 import { useCreatePostMutation } from "../utils/services/ApiConnection";
+import moment from "moment";
 export interface IadminProps {
 }
 
@@ -29,8 +30,10 @@ const admin: FC<IadminProps> = () => {
   const [failed, setFailed] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [date, setDate] = useState<number>("");
   const [blogPost, setBlogPost] = useState<any>({ date: Date.now(), post: initialValue, title: "", excerpt: "", image_url: imageUrl, slug: "" });
   const [createPost, { isLoading, isSuccess }] = useCreatePostMutation();
+  console.log(moment(date).format('MMM DD, YYYY'));
   useEffect(() => {
     setBlogPost((prev:any) => ({ ...prev, date: Date.now(), post: editor.children, title: input, excerpt: excerptInput, slug: parser(input), image_url: imageUrl }));
   }, [input, editor, toggle, excerptInput]);
@@ -72,9 +75,17 @@ const admin: FC<IadminProps> = () => {
 
         </textarea>
       </div>
+      <div className="flex gap-4">
       <div className="">
         <label className="text-white text-2xl font-bold">ImageUrl:</label>
         <input required name="heading" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} type={"text"} className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700" />
+        </div>
+        <div>
+          <label className="text-white text-2xl font-bold">Password:</label>
+          <input type="date"  onChange={(e) => {
+            setDate(new Date(e.target.value).getTime())
+          }} className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700" />
+        </div>
       </div>
       <div className="">
         <label className="text-white text-2xl font-bold">Password:</label>
