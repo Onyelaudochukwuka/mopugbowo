@@ -38,8 +38,8 @@ const admin: FC<IadminProps> = () => {
     image_url: imageUrl,
     slug: "",
   });
+  console.log(date)
   const [createPost, { isLoading, isSuccess }] = useCreatePostMutation();
-  console.log(moment(date).format("MMM DD, YYYY"));
   useEffect(() => {
     setBlogPost((prev: any) => ({
       ...prev,
