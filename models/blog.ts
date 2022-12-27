@@ -23,4 +23,5 @@ const blogSchema = new Schema<BlogPost>({
 
 });
 
+// eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
 export default models?.Blog || model('Blog', blogSchema);
