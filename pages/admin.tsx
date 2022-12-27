@@ -1,10 +1,7 @@
 import React, { FC, FormEvent, useEffect, useMemo, useState } from "react";
 import { Editor } from "../components";
-import { Editable, withReact, useSlate, Slate } from "slate-react";
-import { withHistory } from "slate-history";
-import { createEditor, Node } from "slate";
+
 import { BlogPost } from "../models/blog";
-import { initialValue } from "../components/Editor";
 import { postBlogPost } from "../utils/services";
 import PopUp from "../components/PopUp";
 import Loading from "../components/Loading";
@@ -12,18 +9,23 @@ import { Failed } from "../components/icon";
 import FailedPopUp from "../components/FailedPopUp";
 import { useCreatePostMutation } from "../utils/services/ApiConnection";
 import moment from "moment";
+import dynamic from "next/dynamic";
 export interface IadminProps {}
 
 export const parser = (arg: string): string => {
   var string: string = arg?.replace(" ", "-");
   return arg?.indexOf(" ") > -1 ? parser(string) : string?.toLowerCase();
 };
-const admin: FC<IadminProps> = () => {
-  const editor = useMemo(() => withHistory(withReact(createEditor())), []);
+const DynamicComponentWithNoSSR = dynamic(
+  async () => import("../components/Editor"),
+  { ssr: false, loading: () => <p>Loading...</p> }
+);
+
+const Admin: FC<IadminProps> = () => {
+  const [value, setValue] = useState("");
   const [input, setInput] = useState<string>("");
   const [excerptInput, setExcerptInput] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
-  const [toggle, setToggle] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [failed, setFailed] = useState<boolean>(false);
@@ -32,25 +34,25 @@ const admin: FC<IadminProps> = () => {
   const [date, setDate] = useState<number>(0);
   const [blogPost, setBlogPost] = useState<any>({
     date,
-    post: initialValue,
+    post: value,
     title: "",
     excerpt: "",
     image_url: imageUrl,
     slug: "",
   });
-  console.log(date)
+  console.log(date);
   const [createPost, { isLoading, isSuccess }] = useCreatePostMutation();
   useEffect(() => {
     setBlogPost((prev: any) => ({
       ...prev,
       date,
-      post: editor.children,
+      post: value,
       title: input,
       excerpt: excerptInput,
       slug: parser(input),
       image_url: imageUrl,
     }));
-  }, [input, editor, toggle, excerptInput]);
+  }, [input, value, excerptInput]);
   useEffect(() => {
     if (isLoading) {
       setLoading(true);
@@ -139,7 +141,7 @@ const admin: FC<IadminProps> = () => {
       </div>
       <div>
         <p className="text-white text-2xl font-bold">Details:</p>
-        <Editor {...{ editor, setToggle }} />
+        <DynamicComponentWithNoSSR {...{ value, setValue }} />
       </div>
       <button
         type="submit"
@@ -150,4 +152,4 @@ const admin: FC<IadminProps> = () => {
     </form>
   );
 };
-export default admin;
+export default Admin;
