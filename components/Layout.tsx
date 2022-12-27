@@ -1,12 +1,11 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, ReactNode } from 'react';
 
-import { NextPage } from 'next';
 import Head from 'next/head';
 
 import Footer from './Footer';
 import Navbar from './Navbar';
 
-const Layout = ({ children }: PropsWithChildren<any>) => {
+const Layout: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <div className="min-h-screen bg-dark">
       <Head>

@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC } from 'react';
 
 import { Cancel } from '../public';
 
@@ -24,9 +24,9 @@ const Card: FC<{ changeState: () => void, data: Data, className: string }> = ({
           {details}
           .
         </p>
-        <a className="px-12 py-4 bg-curves rounded-full text-white font-bold cursor-pointer">
+        <span className="px-12 py-4 bg-curves rounded-full text-white font-bold cursor-pointer">
           {link}
-        </a>
+        </span>
       </div>
     </div>
   );

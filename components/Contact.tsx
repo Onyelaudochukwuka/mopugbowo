@@ -36,10 +36,11 @@ const Contact: FC = () => {
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.107868914145!2d5.604486662757621!3d6.380075390984419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xcb4f67723b60b2ea!2sMinistry%20Of%20Perfection%20-%20Ugbowo!5e0!3m2!1sen!2sng!4v1653662210346!5m2!1sen!2sng"
         className="mx-auto w-4/5 h-[500px]"
         loading="lazy"
+        title="Ministry of Perfection Ugbowo Map"
       />
       <div className="flex justify-around gap-12 w-11/12 mx-auto lg:flex-row flex-col">
-        {contactDetails.map(({ icon, heading, content }, i) => (
-          <span key={Id + i} className="flex flex-col items-center justify-center gap-2 lg:p-3 p-12 bg-curves basis-1/5 w-full flex-1 text-center text-text rounded-lg shadow-[0px_4px_8px_rgba(0,0,0,0.25)]">
+        {contactDetails.map(({ icon, heading, content }) => (
+          <span key={Id + heading.slice(0, 7).trim()} className="flex flex-col items-center justify-center gap-2 lg:p-3 p-12 bg-curves basis-1/5 w-full flex-1 text-center text-text rounded-lg shadow-[0px_4px_8px_rgba(0,0,0,0.25)]">
             <span className="block w-12 h-12">
               <Image src={icon} layout="responsive" />
               {' '}

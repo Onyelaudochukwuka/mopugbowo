@@ -3,7 +3,7 @@ import React, { FC, useId, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 
 import {
-  slide1, slide2, slide3, leftArrow, rightArrow,
+  slide1, slide3, leftArrow, rightArrow,
 } from '../public';
 
 type Images = StaticImageData[];
@@ -23,13 +23,24 @@ const Slides: FC = () => {
             return newArr;
           });
         }}
+        onKeyDown={() => {
+          setImages((prev) => {
+            const newArr = [...prev];
+            const [a, b] = newArr;
+            newArr.splice(0, 2, b, a);
+            return newArr;
+          });
+        }}
+        role="button"
+        tabIndex={0}
       >
         <Image src={leftArrow} layout="responsive" />
       </span>
       <div className="flex items-center w-full">
         {images.map((img, i) => (
           <span
-            key={Id + i}
+            // eslint-disable-next-line react/no-array-index-key
+            key={`${Id}-${i}`}
             className={`${
               i % 2 !== 1
                 ? `shadow-[0px_0px_15px_7.5px_rgba(0,0,0,0.25)] hover:shadow-[0px_0px_20px_10px_rgba(0,0,0,0.25)] ${
@@ -49,11 +60,21 @@ const Slides: FC = () => {
         onClick={() => {
           setImages((prev) => {
             const newArr = [...prev];
-            const [a, ...[c, d]] = newArr;
+            const [, ...[c, d]] = newArr;
             newArr.splice(newArr.length - 2, 2, d, c);
             return newArr;
           });
         }}
+        onKeyDown={() => {
+          setImages((prev) => {
+            const newArr = [...prev];
+            const [, ...[c, d]] = newArr;
+            newArr.splice(newArr.length - 2, 2, d, c);
+            return newArr;
+          });
+        }}
+        role="button"
+        tabIndex={0}
       >
         <Image src={rightArrow} layout="responsive" />
       </span>

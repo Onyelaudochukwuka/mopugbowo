@@ -21,7 +21,8 @@ const Footer: FC = () => {
         </div>
         <div className="flex items-center justify-between lg:w-3/12 w-3/4">
           {socials.map((icon: StaticImageData, i: number) => (
-            <span key={Id + i} className="w-10 h-10 block">
+            // eslint-disable-next-line react/no-array-index-key
+            <span key={`${Id}-${i}`} className="w-10 h-10 block">
               <Image src={icon} layout="responsive" />
             </span>
           ))}

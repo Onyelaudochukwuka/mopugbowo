@@ -1,12 +1,17 @@
 import React, { FC } from 'react';
 
-import Countdown from 'react-countdown';
+import Countdown, { CountdownRendererFn } from 'react-countdown';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IEventProps {}
 
-const renderer = ({
-  hours, minutes, seconds, completed,
-}: Record<string, number>) => {
+const Renderer: CountdownRendererFn = ({
+  hours,
+  minutes,
+  seconds,
+  completed,
+}: any & { completed: boolean }) => {
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (completed) {
     // Render a completed state
     return null;
@@ -22,7 +27,7 @@ const renderer = ({
     </span>
   );
 };
-const Event: FC<IEventProps> = (props) => {
-  return <section>Event</section>;
+const Event: FC<IEventProps> = () => {
+  return <Countdown date={Date.now() + 5000} renderer={Renderer} />;
 };
 export default Event;

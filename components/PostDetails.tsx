@@ -3,81 +3,15 @@ import React, { FC } from 'react';
 import moment from 'moment';
 import Image from 'next/image';
 
-import { BlogPost, ChildSchema } from '../models/blog';
+import { BlogPost } from '../models/blog';
 import { PropTypes } from '../typescript';
 
-export interface IPostDetailsProps {
-}
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface IPostDetailsProps { }
 
 const PostDetails: FC<PropTypes<IPostDetailsProps, BlogPost>> = ({
   post, image_url, title, date,
 }) => {
-  const getContentFragment = (index: number, text: any, obj: any, type?: string) => {
-    let modifiedText: any = text;
-
-    if (obj.bold) {
-      modifiedText = <strong>{text}</strong>;
-    }
-
-    if (obj.code) {
-      modifiedText = <code className="font-mono p-[3px] bg-[rgb(238,238,238)]">{text}</code>;
-    }
-
-    if (obj.italic) {
-      modifiedText = <em>{text}</em>;
-    }
-
-    if (obj.underline) {
-      modifiedText = <u>{text}</u>;
-    }
-
-    switch (type) {
-      case 'block-quote':
-        return (
-          <blockquote className="italic text-[rgb(170,170,170)] pl-[10px] border-l-2 border-solid border-[rgb(221,221,221)]">
-            {modifiedText.map((item: JSX.Element, i: number) => <React.Fragment key={i}>{item}</React.Fragment>)}
-          </blockquote>
-        );
-      case 'bulleted-list':
-        return (
-          <ul className="list-disc p-6">
-            {modifiedText.map((item: JSX.Element, i: number) => <React.Fragment key={i}>{item}</React.Fragment>)}
-          </ul>
-        );
-      case 'heading-one':
-        return (
-          <h1 className="text-xl font-bold">
-            {modifiedText.map((item: JSX.Element, i: number) => <React.Fragment key={i}>{item}</React.Fragment>)}
-          </h1>
-        );
-      case 'heading-two':
-        return (
-          <h2 className="text-lg font-bold">
-            {modifiedText.map((item: JSX.Element, i: number) => <React.Fragment key={i}>{item}</React.Fragment>)}
-          </h2>
-        );
-      case 'list-item':
-        return (
-          <li>
-            {modifiedText.map((item: JSX.Element, i: number) => <React.Fragment key={i}>{item}</React.Fragment>)}
-          </li>
-        );
-      case 'numbered-list':
-        return (
-          <ol className="list-decimal p-6">
-            {modifiedText.map((item: JSX.Element, i: number) => <React.Fragment key={i}>{item}</React.Fragment>)}
-          </ol>
-        );
-      case 'paragraph':
-        return (
-          <p>
-            {modifiedText.map((item: JSX.Element, i: number) => <React.Fragment key={i}>{item}</React.Fragment>)}
-          </p>
-        );
-      default:
-        return modifiedText;
-    }
-  };
   return (
     <div className="bg-primaryLight text-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8 lg:w-3/4 w-10/12 mx-auto">
       <div className="relative overflow-hidden shadow-md pb-80 mb-6">
@@ -104,13 +38,7 @@ const PostDetails: FC<PropTypes<IPostDetailsProps, BlogPost>> = ({
           </div>
         </div>
         <h1 className="mb-8 lg:text-5xl text-3xl font-bold text-center">{title}</h1>
-        {post.map((typeObj, index) => {
-          const { type, children } = typeObj;
-
-          const child = children.map((item: ChildSchema, itemindex: number) => (item.type ? getContentFragment(index, (item.children != null) ? item.children.map((item, itemIndex) => getContentFragment(itemindex, item?.text, item)) : item.text, typeObj, item.type) : getContentFragment(itemindex, item.text ? item.text : '', item)));
-
-          return getContentFragment(index, child, typeObj, type);
-        })}
+        <p dangerouslySetInnerHTML={{ __html: post }} />
       </div>
     </div>
   );

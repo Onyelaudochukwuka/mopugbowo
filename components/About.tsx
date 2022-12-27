@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-prop-types */
 import React, {
   FC, useId, useRef, useState,
 } from 'react';
@@ -6,16 +7,18 @@ import { motion, useInView } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 
 import {
-  pastor, about1, about2, about3,
+  pastor, about1, about2,
 } from '../public';
 
 import Card from './Card';
 
-interface About {
+interface IAboutData {
   icon: StaticImageData
   data: Data
 }
-const about: About[] = [
+
+// Links for the card components
+const aboutDetails: IAboutData[] = [
   {
     icon: about1,
     data: {
@@ -50,7 +53,7 @@ export interface Data {
   link: string
 }
 
-const About: FC = () => {
+const About: FC<{}> = () => {
   const Id = useId();
   const [show, setShow] = useState<boolean>(false);
   const [data, setData] = useState<Data>({
@@ -64,14 +67,14 @@ const About: FC = () => {
     margin: '75% 100px 75% 0px',
   });
   const textIsInView = useInView(imageContainerEl, { once: false });
-  const useSetShow = (): void => {
+  const handleSetShow = (): void => {
     return setShow((state) => !state);
   };
   const { span: Span, div: Div } = motion;
   return (
     <section className="mt-24" id="about-us">
       <Card
-        changeState={useSetShow}
+        changeState={handleSetShow}
         data={data}
         className={`${
           show ? 'scale-100' : 'scale-0 select-none'
@@ -88,7 +91,10 @@ const About: FC = () => {
             opacity: isInView ? 1 : 0,
           }}
           transition={{
-            delay: 0, type: 'spring', stiffness: 140, bounce: 200,
+            delay: 0,
+            type: 'spring',
+            stiffness: 140,
+            bounce: 200,
           }}
           className="lg:h-1/3 block lg:basis-1/3 lg:w-full w-3/4 h-auto"
         >
@@ -123,18 +129,20 @@ const About: FC = () => {
         </Div>
       </div>
       <div className="flex lg:justify-evenly lg:w-3/4 ml-auto relative right-0 lg:-translate-y-10 w-full justify-between p-6">
-        {about.map(({ icon, data }: About, i) => (
+        {aboutDetails.map(({ icon, data: details }: IAboutData) => (
           <span
-            key={Id + i}
+            key={Id + details.heading.slice(0, 7).trim()}
             className="w-full h-full block cursor-pointer"
             onClick={() => {
-              useSetShow();
-              setData(data);
+              handleSetShow();
+              setData(details);
             }}
-            tabIndex={5}
-            onBlur={useSetShow}
+            tabIndex={0}
+            onBlur={handleSetShow}
+            aria-hidden="true"
+            role="button"
           >
-            <Image src={icon} layout="responsive" />
+            <Image src={icon} layout="responsive" className="w-full h-full" />
           </span>
         ))}
       </div>

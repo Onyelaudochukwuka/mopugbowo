@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Success, Close, Failed } from './icon';
+import { Close, Failed } from './icon';
 
 export interface IPopUpProps {
   toggle: boolean
@@ -24,5 +24,8 @@ const FailedPopUp: FC<IPopUpProps> = ({ toggle, close, message }) => {
       </div>
     </section>
   );
+};
+FailedPopUp.defaultProps = {
+  message: 'Failed to send message',
 };
 export default FailedPopUp;
