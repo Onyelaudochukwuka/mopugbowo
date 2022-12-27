@@ -1,44 +1,47 @@
-import React, { FC, FormEvent, useEffect, useMemo, useState } from "react";
-import { Editor } from "../components";
+import React, {
+  FC, FormEvent, useEffect, useMemo, useState,
+} from 'react';
 
-import { BlogPost } from "../models/blog";
-import { postBlogPost } from "../utils/services";
-import PopUp from "../components/PopUp";
-import Loading from "../components/Loading";
-import { Failed } from "../components/icon";
-import FailedPopUp from "../components/FailedPopUp";
-import { useCreatePostMutation } from "../utils/services/ApiConnection";
-import moment from "moment";
-import dynamic from "next/dynamic";
+import moment from 'moment';
+import dynamic from 'next/dynamic';
+
+import FailedPopUp from '../components/FailedPopUp';
+import { Failed } from '../components/icon';
+import Loading from '../components/Loading';
+import PopUp from '../components/PopUp';
+import { BlogPost } from '../models/blog';
+import { postBlogPost } from '../utils/services';
+import { useCreatePostMutation } from '../utils/services/ApiConnection';
+
 export interface IadminProps {}
 
 export const parser = (arg: string): string => {
-  var string: string = arg?.replace(" ", "-");
-  return arg?.indexOf(" ") > -1 ? parser(string) : string?.toLowerCase();
+  const string: string = arg?.replace(' ', '-');
+  return arg?.indexOf(' ') > -1 ? parser(string) : string?.toLowerCase();
 };
 const DynamicComponentWithNoSSR = dynamic(
-  async () => import("../components/Editor"),
-  { ssr: false, loading: () => <p>Loading...</p> }
+  async () => import('../components/Editor'),
+  { ssr: false, loading: () => <p>Loading...</p> },
 );
 
 const Admin: FC<IadminProps> = () => {
-  const [value, setValue] = useState("");
-  const [input, setInput] = useState<string>("");
-  const [excerptInput, setExcerptInput] = useState<string>("");
-  const [imageUrl, setImageUrl] = useState<string>("");
+  const [value, setValue] = useState('');
+  const [input, setInput] = useState<string>('');
+  const [excerptInput, setExcerptInput] = useState<string>('');
+  const [imageUrl, setImageUrl] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [failed, setFailed] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [message, setMessage] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [date, setDate] = useState<number>(0);
   const [blogPost, setBlogPost] = useState<any>({
     date,
     post: value,
-    title: "",
-    excerpt: "",
+    title: '',
+    excerpt: '',
     image_url: imageUrl,
-    slug: "",
+    slug: '',
   });
   console.log(date);
   const [createPost, { isLoading, isSuccess }] = useCreatePostMutation();
@@ -69,7 +72,7 @@ const Admin: FC<IadminProps> = () => {
   }, [isSuccess]);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (password !== "passwordmopc") return;
+    if (password !== 'passwordmopc') return;
     createPost(blogPost);
   };
   return (
@@ -92,7 +95,7 @@ const Admin: FC<IadminProps> = () => {
           name="heading"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          type={"text"}
+          type="text"
           className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
         />
       </div>
@@ -103,7 +106,7 @@ const Admin: FC<IadminProps> = () => {
           value={excerptInput}
           onChange={(e) => setExcerptInput(e.target.value)}
           className="p-6 rounded-md"
-        ></textarea>
+        />
       </div>
       <div className="flex gap-4">
         <div className="">
@@ -113,7 +116,7 @@ const Admin: FC<IadminProps> = () => {
             name="heading"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
-            type={"text"}
+            type="text"
             className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
           />
         </div>
@@ -135,7 +138,7 @@ const Admin: FC<IadminProps> = () => {
           name="heading"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          type={"text"}
+          type="text"
           className="py-2 px-4 outline-none w-full rounded-md focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
         />
       </div>

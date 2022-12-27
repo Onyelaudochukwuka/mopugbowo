@@ -1,6 +1,11 @@
-import React, { FC, useId } from "react";
-import Image, { StaticImageData } from "next/image";
-import { footerimg, facebook, twitter, instagram, logo } from "../public";
+import React, { FC, useId } from 'react';
+
+import Image, { StaticImageData } from 'next/image';
+
+import {
+  footerimg, facebook, twitter, instagram, logo,
+} from '../public';
+
 const socials: StaticImageData[] = [facebook, twitter, instagram];
 const Footer: FC = () => {
   const Id = useId();
@@ -29,7 +34,7 @@ const Footer: FC = () => {
         </span>
       </div>
       <span className="w-full lg:block hidden">
-        <Image src={footerimg} layout={"responsive"} />
+        <Image src={footerimg} layout="responsive" />
       </span>
     </section>
   );

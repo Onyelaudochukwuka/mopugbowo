@@ -1,6 +1,11 @@
-import Image, { StaticImageData } from "next/image";
-import React, { FC, useId, useState } from "react";
-import { slide1, slide2, slide3, leftArrow, rightArrow } from "../public";
+import React, { FC, useId, useState } from 'react';
+
+import Image, { StaticImageData } from 'next/image';
+
+import {
+  slide1, slide2, slide3, leftArrow, rightArrow,
+} from '../public';
+
 type Images = StaticImageData[];
 const Slides: FC = () => {
   const [images, setImages] = useState<Images>([slide3, slide1, slide3]);
@@ -19,7 +24,7 @@ const Slides: FC = () => {
           });
         }}
       >
-        <Image src={leftArrow} layout={"responsive"} />
+        <Image src={leftArrow} layout="responsive" />
       </span>
       <div className="flex items-center w-full">
         {images.map((img, i) => (
@@ -28,14 +33,14 @@ const Slides: FC = () => {
             className={`${
               i % 2 !== 1
                 ? `shadow-[0px_0px_15px_7.5px_rgba(0,0,0,0.25)] hover:shadow-[0px_0px_20px_10px_rgba(0,0,0,0.25)] ${
-                    (i + 1) % 3 !== 0
-                      ? `lg:translate-x-36`
-                      : `lg:-translate-x-36`
-                  }`
-                : `z-20 scale-150 shadow-[0px_0px_25px_12.5px_rgba(0,0,0,0.25)] hover:shadow-[0px_0px_40px_20px_rgba(0,0,0,0.25)]`
+                  (i + 1) % 3 !== 0
+                    ? 'lg:translate-x-36'
+                    : 'lg:-translate-x-36'
+                }`
+                : 'z-20 scale-150 shadow-[0px_0px_25px_12.5px_rgba(0,0,0,0.25)] hover:shadow-[0px_0px_40px_20px_rgba(0,0,0,0.25)]'
             } lg:w-1/2 w-[100vw] h-auto block transition-all duration-500 ease-in basis-full`}
           >
-            <Image src={img} layout={"responsive"} />
+            <Image src={img} layout="responsive" />
           </span>
         ))}
       </div>
@@ -50,7 +55,7 @@ const Slides: FC = () => {
           });
         }}
       >
-        <Image src={rightArrow} layout={"responsive"} />
+        <Image src={rightArrow} layout="responsive" />
       </span>
     </div>
   );

@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
 
 export interface IEventsProps {
 }
@@ -6,8 +6,8 @@ export interface IEventsProps {
 const events: NextPage<IEventsProps> = () => {
   return (
     <section>
-      events
+      <h1 className="text-white text-3xl font-semibold text-center">Recent Events</h1>
     </section>
   );
-}
+};
 export default events;

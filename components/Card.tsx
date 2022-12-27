@@ -1,7 +1,10 @@
-import React, { FC, PropsWithChildren } from "react";
-import { Cancel } from "../public";
-import { Data } from "./About";
-const Card: FC<{ changeState: () => void; data: Data; className: string }> = ({
+import React, { FC, PropsWithChildren } from 'react';
+
+import { Cancel } from '../public';
+
+import { Data } from './About';
+
+const Card: FC<{ changeState: () => void, data: Data, className: string }> = ({
   changeState,
   data,
   className,
@@ -17,7 +20,10 @@ const Card: FC<{ changeState: () => void; data: Data; className: string }> = ({
           onClick={changeState}
         />
         <h1 className="text-2xl font-bold mt-8 lg:mt-0">{heading}</h1>
-        <p className="font-semibold text-lg">{details}.</p>
+        <p className="font-semibold text-lg">
+          {details}
+          .
+        </p>
         <a className="px-12 py-4 bg-curves rounded-full text-white font-bold cursor-pointer">
           {link}
         </a>

@@ -1,12 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
-import Api from "./ApiConnection";
+import { configureStore } from '@reduxjs/toolkit';
+
+import Api from './ApiConnection';
 
 const store = configureStore({
-    reducer: {
-        [Api.reducerPath]: Api.reducer
-    },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(Api.middleware),
+  reducer: {
+    [Api.reducerPath]: Api.reducer,
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(Api.middleware),
 });
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
