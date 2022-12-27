@@ -8,3 +8,5 @@ export { default as Navbar } from './Navbar';
 export { default as Sermons } from './Sermons';
 export { default as Card } from './Card';
 export { default as PostCard } from './PostCard';
+export { default as Event } from './Event';
+export { default as EventsPopUp } from './EventsPopUp';
