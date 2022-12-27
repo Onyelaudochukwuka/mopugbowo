@@ -5,7 +5,7 @@ import { CommentSchema } from "../../models/comments";
 const ApiHeaders = {
   Accept: "application/json",
 };
-const baseUrl = "https://localhost:3000" + "/api";
+const baseUrl = process.env.NODE_ENV === 'development' ? "https://localhost:3000/api" : "https://mopcugbowo.site/api";
 const createRequest = (url: string, method: any) => ({
   url,
   headers: ApiHeaders,
