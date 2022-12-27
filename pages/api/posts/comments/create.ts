@@ -8,7 +8,10 @@ interface Data {
   data?: CommentSchema
   message?: string
 }
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>,
+): Promise<void> {
   const { method } = req;
   await dbConnect();
   switch (method) {
@@ -17,7 +20,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         const comment = await Comment.create(req.body);
         res.status(201).json({ success: true, data: comment });
       } catch (error: any) {
-        console.log(error);
         res.status(400).json({ success: false, message: error.message });
       }
       break;
@@ -26,3 +28,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       break;
   }
 }
+export default handler;

@@ -1,6 +1,6 @@
 import { BlogPost } from '../../models/blog';
 
-export const postBlogPost = async (data: BlogPost) => {
+export const postBlogPost = async (data: BlogPost): Promise<void> => {
   const res = await fetch('/api/post', {
     method: 'POST',
     headers: {
@@ -10,7 +10,7 @@ export const postBlogPost = async (data: BlogPost) => {
   });
   return res.json();
 };
-export const getPosts = async () => {
+export const getPosts = async (): Promise<void> => {
   const res = await fetch('http://localhost:3000/api/getPosts', {
     method: 'GET',
     headers: {
@@ -19,7 +19,7 @@ export const getPosts = async () => {
   });
   return res.json();
 };
-export const fetchPost = async (slug: string) => {
+export const fetchPost = async (slug: string): Promise<void> => {
   const res = await fetch(`http://localhost:3000/api/fetchPost?slug=${slug}`, {
     method: 'GET',
     headers: {

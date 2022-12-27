@@ -8,7 +8,10 @@ interface Data {
   data?: BlogPost[]
   message?: string
 }
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>,
+): Promise<void> {
   const { method } = req;
   await dbConnect();
   switch (method) {
@@ -17,7 +20,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         const blog = await Blog.find({ $sort: { date: 1 } });
         res.status(200).json({ success: true, data: blog });
       } catch (error: any) {
-        console.log(error);
         res.status(400).json({ success: false, message: error.message });
       }
       break;
@@ -26,3 +28,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       break;
   }
 }
+export default handler;

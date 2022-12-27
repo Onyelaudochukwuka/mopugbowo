@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import dbConnect from '../../../lib/dbConnect';
@@ -8,7 +9,10 @@ interface Data {
   data?: BlogPost
   message?: string
 }
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>,
+): Promise<void> {
   const { method } = req;
   const { slug } = req.query;
   await dbConnect();
@@ -22,7 +26,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
           res.status(404).json({ success: false, message: 'Post not found' });
         }
       } catch (error: any) {
-        console.log(error);
         res.status(400).json({ success: false, message: error.message });
       }
       break;
@@ -31,3 +34,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       break;
   }
 }
+export default handler;

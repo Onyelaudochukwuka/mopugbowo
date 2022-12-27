@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import Router from 'next/router';
 
 import { BlogPost } from '../../models/blog';
 import { CommentSchema } from '../../models/comments';
@@ -7,13 +6,22 @@ import { CommentSchema } from '../../models/comments';
 const ApiHeaders = {
   Accept: 'application/json',
 };
-const baseUrl = process.env.NODE_ENV === 'development' ? 'https://localhost:3000/api' : 'https://mopcugbowo.site/api';
-const createRequest = (url: string, method: any) => ({
+
+const createRequest = (url: string, method: any): {
+  url: string
+  headers: any
+  method: string
+} => ({
   url,
   headers: ApiHeaders,
   method,
 });
-const postRequest = (url: string, method: string, body: object) => ({
+const postRequest = (url: string, method: string, body: object): {
+  url: string
+  headers: any
+  method: string
+  body: object
+} => ({
   url,
   headers: ApiHeaders,
   method,
@@ -51,6 +59,10 @@ const connectedAwardsApi = createApi({
   }),
 });
 export const {
-  useGetPostsQuery, useGetPostQuery, useCreatePostMutation, useCreateCommentMutation, useGetCommentsQuery,
+  useGetPostsQuery,
+  useGetPostQuery,
+  useCreatePostMutation,
+  useCreateCommentMutation,
+  useGetCommentsQuery,
 } = connectedAwardsApi;
 export default connectedAwardsApi;

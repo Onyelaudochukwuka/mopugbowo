@@ -1,6 +1,7 @@
-import React, { PropsWithChildren } from 'react';
+/* eslint-disable no-tabs */
+import React, { FC } from 'react';
 
-const Cancel = (props: PropsWithChildren<any>) => {
+const Cancel: FC = (props) => {
   return (
     <svg
       {...props}

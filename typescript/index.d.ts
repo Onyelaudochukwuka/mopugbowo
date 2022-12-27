@@ -1,5 +1,4 @@
-import { ReactNode } from 'react';
-
+/* eslint-disable @typescript-eslint/no-empty-interface */
 declare global {
   declare namespace Types {
     export interface IconProps {

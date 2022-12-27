@@ -1,24 +1,20 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 
 import type { NextPage } from 'next';
-import { TypeAnimation } from 'react-type-animation';
 
 import { PostCard } from '../components';
 import Loading from '../components/Loading';
 import { BlogPost } from '../models/blog';
-import { getPosts } from '../utils/services';
 import { useGetPostsQuery } from '../utils/services/ApiConnection';
 
 export interface IblogProps {
   posts: any
   loading: boolean
 }
-const blog: NextPage<IblogProps> = () => {
-  // const [loading, setLoading] = useState<boolean>(true);
-  const { data: posts, isLoading: loading, refetch } = useGetPostsQuery({
+const Blog: NextPage<IblogProps> = () => {
+  const { data: posts, isLoading: loading } = useGetPostsQuery({
     pollingInterval: 3000,
   });
-  console.log(posts, loading);
   return (
     <section className="flex flex-col items-center justify-center w-full">
       <Loading toggle={loading} />
@@ -34,4 +30,4 @@ const blog: NextPage<IblogProps> = () => {
     </section>
   );
 };
-export default blog;
+export default Blog;

@@ -8,7 +8,10 @@ interface Data {
   data?: BlogPost
   message?: string
 }
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>,
+): Promise<void> {
   const { method } = req;
   await dbConnect();
   switch (method) {
@@ -22,7 +25,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
           res.status(400).json({ success: false, message: 'Post already exists' });
         }
       } catch (error: any) {
-        console.log(error);
         res.status(400).json({ success: false, message: error.message });
       }
       break;
@@ -31,3 +33,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       break;
   }
 }
+export default handler;

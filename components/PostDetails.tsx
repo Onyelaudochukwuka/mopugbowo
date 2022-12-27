@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { FC } from 'react';
 
 import moment from 'moment';

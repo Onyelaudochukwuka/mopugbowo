@@ -51,7 +51,7 @@ const Admin: FC<IadminProps> = () => {
       slug: parser(input),
       image_url: imageUrl,
     }));
-  }, [input, value, excerptInput]);
+  }, [input, value, excerptInput, date, imageUrl]);
   useEffect(() => {
     if (isLoading) {
       setLoading(true);
