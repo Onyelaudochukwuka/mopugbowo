@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React from 'react';
 
-const Arrow: FC<{ className: string }> = (props) => {
+const Arrow: any = (props: any) => {
   return (
     <svg
       {...props}

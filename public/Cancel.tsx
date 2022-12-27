@@ -1,7 +1,7 @@
 /* eslint-disable no-tabs */
-import React, { FC } from 'react';
+import React from 'react';
 
-const Cancel: FC<{ className: string }> = (props) => {
+const Cancel: any = (props: any) => {
   return (
     <svg
       {...props}
